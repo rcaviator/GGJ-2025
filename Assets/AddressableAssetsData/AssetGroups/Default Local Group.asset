@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c4c8bcfe244e8e4a8767b12db4b9dad
+    m_Address: Assets/Prefabs/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b5b3c31299bbca40acf5777aedf78ee
     m_Address: Assets/Prefabs/Trash.prefab
     m_ReadOnly: 0
