@@ -90,11 +90,11 @@ namespace Game.Utilities
                 {
                     // Store values and then disable simulated
                     //gravity = rBody.gravityScale;
-                    storedVelocity = rBody.velocity;
+                    storedVelocity = rBody.linearVelocity;
                     //isSimulated = rBody.simulated;
 
                     //rBody.gravityScale = 0;
-                    rBody.velocity = Vector2.zero;
+                    rBody.linearVelocity = Vector2.zero;
                     rBody.isKinematic = true;
                 }
             }
@@ -124,7 +124,7 @@ namespace Game.Utilities
                     //rBody.simulated = isSimulated;
                     //rBody.gravityScale = gravity;
                     rBody.isKinematic = false;
-                    rBody.velocity = storedVelocity;
+                    rBody.linearVelocity = storedVelocity;
                 }
             }
 
