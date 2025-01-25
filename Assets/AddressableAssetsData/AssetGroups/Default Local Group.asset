@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: af34b07db050f404c8532e5e1a9c351d
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9b5b3c31299bbca40acf5777aedf78ee
+    m_Address: Assets/Prefabs/Trash.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4e5bd38444146d4cbffe2d651ae619d
+    m_Address: Assets/Prefabs/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 72d232f5af8a21947afa5725d07d9198, type: 2}
   m_SchemaSet:
