@@ -10,7 +10,7 @@ namespace GGJ2025.Managers
         #region Fields
 
         // Singleton instance of the class
-        static UIManager instance;
+        static UIManager? instance;
 
         #endregion
 
@@ -39,31 +39,31 @@ namespace GGJ2025.Managers
         /// <summary>
         /// The main menu canvas.
         /// </summary>
-        public MainMenuCanvas MainMenu
+        public MainMenuCanvas? MainMenu
         { get; set; }
 
         /// <summary>
         /// The level 1 canvas.
         /// </summary>
-        public Level1Canvas Level1
+        public Level1Canvas? Level1
         { get; set; }
 
         /// <summary>
         /// The win menu canvas.
         /// </summary>
-        public WinCanvas Win
+        public WinCanvas? Win
         { get; set; }
 
         /// <summary>
         /// The lose menu canvas.
         /// </summary>
-        public LoseCanvas Lose
+        public LoseCanvas? Lose
         { get; set; }
 
         /// <summary>
         /// The credits menu canvas.
         /// </summary>
-        public CreditsCanvas Credits
+        public CreditsCanvas? Credits
         { get; set; }
 
         #endregion

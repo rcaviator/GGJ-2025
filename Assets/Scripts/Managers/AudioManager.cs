@@ -61,7 +61,7 @@ namespace GGJ2025.Managers
         #region Fields
 
         // Singleton instance
-        static AudioManager instance;
+        static AudioManager? instance;
 
         // Music, UI, and game sound effect dictionaries
         Dictionary<MusicSoundEffect, AudioClip> musicSoundEffectsDict;
@@ -333,7 +333,7 @@ namespace GGJ2025.Managers
         /// </summary>
         /// <param name="effect">the clip to get</param>
         /// <returns>the audio clip</returns>
-        public AudioClip GetAudioClip(GameSoundEffect effect)
+        public AudioClip? GetAudioClip(GameSoundEffect effect)
         {
             if (!GameSoundEffectsDict.ContainsKey(effect))
             {

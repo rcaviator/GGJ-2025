@@ -16,7 +16,7 @@ namespace GGJ2025.Utilities
         #region Fields
 
         // Dictionary for storing all initial game entity data constants
-        private static Dictionary<GameEntity, GameEntityData> gameEntities;
+        private static Dictionary<GameEntity, GameEntityData>? gameEntities;
 
         #endregion
 
@@ -200,7 +200,7 @@ namespace GGJ2025.Utilities
                 // Stats
 
             };
-            gameEntities.Add(GameEntity.None, none);
+            gameEntities!.Add(GameEntity.None, none);
 
             #endregion
         }

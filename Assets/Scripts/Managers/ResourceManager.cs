@@ -45,7 +45,7 @@ namespace GGJ2025.Managers
         #region Fields
 
         // Singleton instance
-        static ResourceManager instance;
+        static ResourceManager? instance;
 
         // The dictionary to hold all the loaded prefabs
         Dictionary<Prefabs, GameObject> prefabDictionary;
@@ -106,7 +106,7 @@ namespace GGJ2025.Managers
         /// </summary>
         /// <param name="getPrefab">the name of the prefab to get</param>
         /// <returns>the requested prefab, else null</returns>
-        public GameObject GetPrefab(Prefabs getPrefab)
+        public GameObject? GetPrefab(Prefabs getPrefab)
         {
             if (!prefabDictionary.ContainsKey(getPrefab))
             {

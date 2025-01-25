@@ -31,7 +31,7 @@ namespace GGJ2025.Managers
         }
 
         // Singleton instance
-        static MySceneManager instance;
+        static MySceneManager? instance;
 
         // Dictionary of scenes
         Dictionary<Scenes, string> sceneDict;

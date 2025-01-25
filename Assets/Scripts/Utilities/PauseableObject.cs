@@ -8,8 +8,8 @@ namespace GGJ2025.Utilities
         #region Fields
 
         // Component references
-        protected Rigidbody2D rBody;
-        protected Animator anim;
+        protected Rigidbody2D? rBody;
+        protected Animator? anim;
 
         // Rigidbody values
         //float gravity;
@@ -83,10 +83,10 @@ namespace GGJ2025.Utilities
             IsPaused = true;
 
             // Rigidbody
-            if (rBody)
+            if (rBody != null)
             {
                 // Set values only if applicable
-                if (!rBody.isKinematic)
+                if (rBody.bodyType != RigidbodyType2D.Kinematic)
                 {
                     // Store values and then disable simulated
                     //gravity = rBody.gravityScale;
@@ -95,7 +95,7 @@ namespace GGJ2025.Utilities
 
                     //rBody.gravityScale = 0;
                     rBody.linearVelocity = Vector2.zero;
-                    rBody.isKinematic = true;
+                    rBody.bodyType = RigidbodyType2D.Kinematic;
                 }
             }
 
@@ -118,12 +118,12 @@ namespace GGJ2025.Utilities
             if (rBody)
             {
                 // Set values only if applicable
-                if (rBody.isKinematic)
+                if (rBody.bodyType == RigidbodyType2D.Kinematic)
                 {
                     // Enable simulated and then set stored values back
                     //rBody.simulated = isSimulated;
                     //rBody.gravityScale = gravity;
-                    rBody.isKinematic = false;
+                    rBody.bodyType = RigidbodyType2D.Dynamic;
                     rBody.linearVelocity = storedVelocity;
                 }
             }

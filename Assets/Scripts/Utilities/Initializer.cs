@@ -29,7 +29,6 @@ namespace GGJ2025.Utilities
             GameManager.Instance.ToString();
             AudioManager.Instance.ToString();
             MySceneManager.Instance.ToString();
-            InputManager.Instance.ToString();
             ResourceManager.Instance.ToString();
         }
 

@@ -13,7 +13,7 @@ namespace GGJ2025.Managers
         #region Fields
 
         // Singleton instance
-        static GameManager instance;
+        static GameManager? instance;
 
         // Singletong instance of level controller
         LevelController levelController;
