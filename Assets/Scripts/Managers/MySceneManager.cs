@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using GGJ2025.Utilities;
 using UnityEngine.SceneManagement;
-using Game.Utilities;
 
-namespace Game.Managers
+namespace GGJ2025.Managers
 {
     /// <summary>
     /// MySceneManager is the singleton that handles all Scene information.

@@ -1,6 +1,6 @@
-using Game.UI;
+using GGJ2025.UI;
 
-namespace Game.Managers
+namespace GGJ2025.Managers
 {
     /// <summary>
     /// UIManager is the singleton that handles all the UI in the game.

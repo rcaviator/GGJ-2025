@@ -1,7 +1,7 @@
+using GGJ2025.Managers;
 using UnityEngine;
-using Game.Managers;
 
-namespace Game.UI
+namespace GGJ2025.UI
 {
     public class CreditsCanvas : MonoBehaviour
     {

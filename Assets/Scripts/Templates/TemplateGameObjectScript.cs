@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Game.Managers;
-using Game.Utilities;
+using GGJ2025.Utilities;
 
-namespace Game.Templates // <- UPDATE TO USER-SPECIFIC NAMESPACE
+namespace GGJ2025.Templates // <- UPDATE TO USER-SPECIFIC NAMESPACE
 {
     public class TemplateGameObjectScript : PauseableObject // <- RENAME CLASS (AND FILE) AND INHERIT FROM THE APPROPRIATE CLASS
     {

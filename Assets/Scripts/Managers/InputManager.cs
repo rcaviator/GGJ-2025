@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Utilities
+namespace GGJ2025.Managers
 {
     #region Public User Action Type Enum
 

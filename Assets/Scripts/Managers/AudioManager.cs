@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Managers
+namespace GGJ2025.Managers
 {
     #region Public Audio Type Enums
 

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using GGJ2025.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Game.Utilities;
 
-namespace Game.Managers
+namespace GGJ2025.Managers
 {
     /// <summary>
     /// GameManager is the main manager for the whole application.

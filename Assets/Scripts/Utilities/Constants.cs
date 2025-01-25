@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 // Workaround for init keyword to function in this .NET version
 namespace System.Runtime.CompilerServices
@@ -7,7 +6,7 @@ namespace System.Runtime.CompilerServices
     internal static class IsExternalInit { }
 }
 
-namespace Game.Utilities
+namespace GGJ2025.Utilities
 {
     /// <summary>
     /// All constants for the entire application.

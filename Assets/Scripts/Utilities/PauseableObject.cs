@@ -1,7 +1,7 @@
+using GGJ2025.Managers;
 using UnityEngine;
-using Game.Managers;
 
-namespace Game.Utilities
+namespace GGJ2025.Utilities
 {
     public abstract class PauseableObject : MonoBehaviour
     {
