@@ -1,7 +1,10 @@
 {
     "name": "GGJ2025",
     "rootNamespace": "GGJ2025",
-    "references": [],
+    "references": [
+        "Unity.Addressables",
+        "Unity.ResourceManager"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
