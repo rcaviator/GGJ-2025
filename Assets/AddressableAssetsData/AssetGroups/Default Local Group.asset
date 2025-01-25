@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abe0be861fd175d4b82477d519755eb7
+    m_Address: Assets/Prefabs/PlayerBubble.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: baebd63796cb8394c8ed626da9ad4c77
     m_Address: Assets/Scenes/Game.unity
     m_ReadOnly: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using GGJ2025.Utilities;
 
 namespace GGJ2025
 {
@@ -19,7 +20,7 @@ namespace GGJ2025
         { get; private set; }
 
         public Vector2 Direction
-        { get; private set; }
+        { get; set; }
 
         public float LifeTime
         { get; private set; }
@@ -41,7 +42,16 @@ namespace GGJ2025
 
         protected virtual void Update()
         {
+            if (CurrentTime < LifeTime)
+            {
+                CurrentTime += Time.deltaTime;
 
+                transform.Translate(Direction * Speed * Time.deltaTime);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         #endregion
@@ -54,9 +64,14 @@ namespace GGJ2025
 
         #region Protected Methods
 
-        protected void SetInitialData()
+        protected void SetInitialData(Constants.Projectiles projectileType)
         {
+            Constants.Projectile retrievedProjectile = Constants.GetProjectileData(projectileType);
 
+            Size = retrievedProjectile.SIZE;
+            Speed = retrievedProjectile.SPEED;
+            LifeTime = retrievedProjectile.LIFETIME;
+            Damage = retrievedProjectile.DAMAGE;
         }
 
         #endregion

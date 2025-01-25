@@ -15,8 +15,8 @@ namespace GGJ2025.Utilities
     {
         #region Fields
 
-        // Dictionary for storing all initial game entity data constants
-        private static Dictionary<GameEntity, GameEntityData>? gameEntities;
+        // Dictionary for storing all initial projectile data constants
+        private static Dictionary<Projectiles, Projectile>? projectileDic;
 
         #endregion
 
@@ -102,38 +102,35 @@ namespace GGJ2025.Utilities
 
         #endregion
 
-        #region Game Enums and Utilities
+        #region Player
 
-        // Template enum and constants struct. Make as many pairs as needed
+        public const float PLAYER_HEALTH = 100f;
+        public const float PLAYER_SPEED = 10f;
+        public const float PLAYER_BUBBLE_PROJECTILE_COOL_DOWN = .1f;
+
+        #endregion
+
+        #region Game Enums and Utilities
 
         /// <summary>
         /// The game object entity type.
         /// </summary>
-        public enum GameEntity
+        public enum Projectiles
         {
             None,
-
+            PlayerBubble,
+            EnemyProjectile,
         }
 
         /// <summary>
-        /// Data structure for each game object's initial data constants.
+        /// Data structure for each projectile's initial data constants.
         /// </summary>
-        public readonly struct GameEntityData
+        public readonly struct Projectile
         {
-            // Enums
-
-
-            // Movement
-            public float MOVEMENT_ACCELERATION_RATE { get; init; }
-            public float MOVEMENT_DECELERATION_RATE { get; init; }
-            public float MOVEMENT_FORWARD_MAX_SPEED { get; init; }
-            public float MOVEMENT_BACKWARD_MAX_SPEED { get; init; }
-            public float MOVEMENT_LEFT_TURN_RATE { get; init; }
-            public float MOVEMENT_RIGHT_TURN_RATE { get; init; }
-            public float MOVEMENT_JUMP_FORCE_AMOUNT { get; init; }
-
-            // Stats
-
+            public float SIZE { get; init; }
+            public float SPEED { get; init; }
+            public float LIFETIME { get; init; }
+            public float DAMAGE { get; init; }
         }
 
         #endregion
@@ -141,26 +138,26 @@ namespace GGJ2025.Utilities
         #region Public Methods
 
         /// <summary>
-        /// Retrieves initialization constants for a specified game entity.
+        /// Retrieves initialization constants for a specified projectile.
         /// </summary>
-        /// <param name="entity">the game entity to retrieve initial data</param>
+        /// <param name="projectile">the projectile to retrieve initial data</param>
         /// <returns>its initial data</returns>
-        public static GameEntityData GetGameData(GameEntity entity)
+        public static Projectile GetProjectileData(Projectiles projectile)
         {
             // Create the dicitionary on the first call
-            if (gameEntities == null)
+            if (projectileDic == null)
             {
-                gameEntities = new Dictionary<GameEntity, GameEntityData>();
-                InitializeGameData();
+                projectileDic = new Dictionary<Projectiles, Projectile>();
+                InitializeProjectileData();
             }
 
             // Return None if the entity does not exist in the dictionary
-            if (!gameEntities.ContainsKey(entity))
+            if (!projectileDic.ContainsKey(projectile))
             {
-                return gameEntities[GameEntity.None];
+                return projectileDic[Projectiles.None];
             }
 
-            return gameEntities[entity];
+            return projectileDic[projectile];
         }
 
         #endregion
@@ -168,28 +165,46 @@ namespace GGJ2025.Utilities
         #region Private Methods
 
         /// <summary>
-        /// Initializes the game entity constants dictionary.
+        /// Initializes the projectile constants dictionary.
         /// </summary>
-        private static void InitializeGameData()
+        private static void InitializeProjectileData()
         {
             #region None
 
-            // None
-            GameEntityData none = new GameEntityData()
+            Projectile none = new Projectile()
             {
-                // Movement
-                MOVEMENT_ACCELERATION_RATE = 0f,
-                MOVEMENT_DECELERATION_RATE = 0f,
-                MOVEMENT_FORWARD_MAX_SPEED = 0f,
-                MOVEMENT_BACKWARD_MAX_SPEED = 0f,
-                MOVEMENT_LEFT_TURN_RATE = 0f,
-                MOVEMENT_RIGHT_TURN_RATE = 0f,
-                MOVEMENT_JUMP_FORCE_AMOUNT = 0f,
-
-                // Stats
-
+                SIZE = 1,
+                SPEED = 1,
+                LIFETIME = 1,
+                DAMAGE = 1,
             };
-            gameEntities!.Add(GameEntity.None, none);
+            projectileDic!.Add(Projectiles.None, none);
+
+            #endregion
+
+            #region Player Bubble
+
+            Projectile playerBubble = new Projectile()
+            {
+                SIZE = 1,
+                SPEED = 5,
+                LIFETIME = 2,
+                DAMAGE = 1,
+            };
+            projectileDic!.Add(Projectiles.PlayerBubble, playerBubble);
+
+            #endregion
+
+            #region Enemy Projectile
+
+            Projectile enemyProjectile = new Projectile()
+            {
+                SIZE = 1,
+                SPEED = 5,
+                LIFETIME = 2,
+                DAMAGE = 1,
+            };
+            projectileDic!.Add(Projectiles.EnemyProjectile, enemyProjectile);
 
             #endregion
         }
