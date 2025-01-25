@@ -25,6 +25,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9db94e5eb00051e4cb9abdb613b0f7fe
+    m_Address: Assets/Prefabs/UI/MainMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: baebd63796cb8394c8ed626da9ad4c77
+    m_Address: Assets/Scenes/Game.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f4e5bd38444146d4cbffe2d651ae619d
     m_Address: Assets/Prefabs/Enemy.prefab
     m_ReadOnly: 0

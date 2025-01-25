@@ -12,8 +12,7 @@ namespace GGJ2025.Utilities
 
     public GameObject? Prefab { get; private set; }
 
-    [MemberNotNullWhen(true, "Prefab")]
-    public bool Initialized => Prefab is not null;
+    [MemberNotNullWhen(true, "Prefab")] public bool Initialized => Prefab is not null;
 
     private IEnumerator Start()
     {
