@@ -258,7 +258,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 4
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_EnableGPUInstancing: 1
@@ -533,7 +533,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.5
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -5077,13 +5077,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055617603}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.9995518, y: -0, z: -0, w: -0.029938098}
+  m_LocalRotation: {x: -0.049224388, y: 0.0034262938, z: -0.00036639062, w: 0.9987818}
   m_LocalPosition: {x: -2.1779554, y: 1.88, z: 0.07406489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -183.431, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.643, y: 0.396, z: -0.062}
 --- !u!1 &1466013195
 GameObject:
   m_ObjectHideFlags: 0
