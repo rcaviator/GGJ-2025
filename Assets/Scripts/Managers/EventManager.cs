@@ -14,7 +14,7 @@ namespace GGJ2025
         #region Fields
 
         // Singleton instance of the EventManager
-        private static EventManager instance;
+        private static EventManager instance = null!;
 
         // Stores event mappings using a hashtable for quick lookup
         private Hashtable eventHash = new();
@@ -109,7 +109,7 @@ namespace GGJ2025
             if (instance.eventHash.ContainsKey(key))
             {
                 // Remove the listener from the existing event
-                Action<T> thisEvent = (Action<T>)instance.eventHash[key];
+                Action<T>? thisEvent = (Action<T>)instance.eventHash[key];
                 thisEvent -= listener;
                 if (thisEvent == null)
                 {
@@ -132,7 +132,7 @@ namespace GGJ2025
             if (instance.eventHash.ContainsKey(eventType))
             {
                 // Remove the listener from the existing event
-                Action thisEvent = (Action)instance.eventHash[eventType];
+                Action? thisEvent = (Action)instance.eventHash[eventType];
                 thisEvent -= listener;
                 if (thisEvent == null)
                 {

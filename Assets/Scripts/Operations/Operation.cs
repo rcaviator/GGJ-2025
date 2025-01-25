@@ -46,7 +46,7 @@ public abstract class Operation : IEnumerator
 
   public bool Completed { get; private set; }
 
-  public Exception Exception { get; protected set; }
+  public Exception? Exception { get; protected set; }
 
   protected abstract IEnumerator Execute();
 }
