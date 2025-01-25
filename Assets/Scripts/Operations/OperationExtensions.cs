@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GGJ2025.Operations;
 
@@ -13,4 +14,6 @@ public static class OperationExtensions
   {
     new EnumeratorOperation(enumerator).Execute();
   }
+
+  public static AddressablesLoadOperation<T> ToOperation<T>(this AsyncOperationHandle<T> handle) => new(handle);
 }

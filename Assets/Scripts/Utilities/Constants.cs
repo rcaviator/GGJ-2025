@@ -69,17 +69,6 @@ namespace GGJ2025.Utilities
 
         #endregion
 
-        #region Scenes
-
-        // Scene names
-        public const string SCENE_MAIN_MENU = "MainMenu";
-        public const string SCENE_LEVEL_1 = "Level1";
-        public const string SCENE_WIN = "Win";
-        public const string SCENE_LOSE = "Lose";
-        public const string SCENE_CREDITS = "Credits";
-
-        #endregion
-
         #region Lighting
 
 

@@ -17,12 +17,14 @@ public class AddressableNameLookupAttributeDrawer : PropertyDrawer
   {
     if (names == null)
     {
+      var lookupAttribute = (AddressableNameLookupAttribute)attribute;
       var assets = new List<AddressableAssetEntry>();
-      AddressableAssetSettingsDefaultObject.Settings.GetAllAssets(assets, false);
+      AddressableAssetSettingsDefaultObject.Settings.GetAllAssets(assets, false, null,
+        entry => lookupAttribute.Type == null || lookupAttribute.Type == entry.MainAssetType);
       names = assets.Select(a => new GUIContent(a.AssetPath)).ToArray();
     }
 
-    var selectedIndex = 0;
+    var selectedIndex = -1;
     for (var i = 0; i < names.Length; i++)
     {
       if (names[i].text == property.stringValue)
@@ -32,7 +34,7 @@ public class AddressableNameLookupAttributeDrawer : PropertyDrawer
       }
     }
 
-    var newIndex = EditorGUI.Popup(position, label, selectedIndex, names);
+    var newIndex = EditorGUI.Popup(position, label, selectedIndex == -1 ? 0 : selectedIndex, names);
     if (newIndex != selectedIndex)
     {
       property.stringValue = names[newIndex].text;
