@@ -18,6 +18,8 @@ namespace GGJ2025
         Vector2 moveAmount;
         Vector2 mousePosition;
 
+        float bubbleSpawnCoolDown;
+
         #endregion
 
         #region Properties
@@ -49,23 +51,32 @@ namespace GGJ2025
             // movement
             moveAmount = moveAction.ReadValue<Vector2>();
             Vector2.ClampMagnitude(moveAmount, 1);
-            transform.Translate(moveAmount * 10 * Time.deltaTime);
+            transform.Translate(moveAmount * Constants.PLAYER_SPEED * Time.deltaTime);
 
             
             mousePosition = Mouse.current.position.ReadValue();
             
+            // bubble gun control
+            if (bubbleSpawnCoolDown >= Constants.PLAYER_BUBBLE_PROJECTILE_COOL_DOWN)
+            {
+                if (Mouse.current.leftButton.isPressed)
+                {
+                    bubbleSpawnCoolDown = 0;
+
+                    PlayerBubble bubble = Instantiate(prefabLoader.Prefab, transform.position, Quaternion.identity).GetComponent<PlayerBubble>();
+                }
+            }
+            else
+            {
+                bubbleSpawnCoolDown += Time.deltaTime;
+            }
         }
 
         #endregion
 
         #region Public Methods
 
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            moveAmount = context.ReadValue<Vector2>();
-            Vector2.ClampMagnitude(moveAmount, 1);
-            transform.Translate(moveAmount * 10 * Time.deltaTime);
-        }
+        
 
         public void OnShoot(InputAction.CallbackContext context)
         {
