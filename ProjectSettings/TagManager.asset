@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Trash
   - Enemy
+  - EnemyProjectile
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
