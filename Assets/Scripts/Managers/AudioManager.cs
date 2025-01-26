@@ -52,7 +52,7 @@ namespace GGJ2025.Managers
         // Default
         //None,
 
-        // Player
+       
 
 
         // Player Bubble
@@ -60,6 +60,9 @@ namespace GGJ2025.Managers
 
         // Enemies
         TrashFootstep, TrashBite, TrashSpit,
+
+        // Player
+        StartMove,MoveLoop,
     }
 
     #endregion
