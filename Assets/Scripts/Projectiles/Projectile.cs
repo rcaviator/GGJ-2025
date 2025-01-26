@@ -14,10 +14,10 @@ namespace GGJ2025
         #region Properties
 
         public float Size
-        { get; private set; }
+        { get; protected set; }
 
         public float Speed
-        { get; private set; }
+        { get; protected set; }
 
         public Vector2 Direction
         { get; set; }
