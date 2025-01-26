@@ -7,12 +7,17 @@ namespace GGJ2025.Player
   public class TrashTracker : MonoBehaviour
   {
     [SerializeField] private UnityEvent onTrashCleared = new();
+        [SerializeField] AudioSource windSource;
+        [SerializeField] AudioSource birdSource;
 
-    private int trashCount;
+        private int trashCount;
+    private int maxTrash;
 
     private void Awake()
     {
       EventManager.StartListening<bool>(CustomEventType.Trash, OnTrash);
+      
+      maxTrash = trashCount;
     }
 
     private void OnTrash(bool exists)
@@ -24,6 +29,8 @@ namespace GGJ2025.Player
       else
       {
         trashCount--;
+        //windSource.volume = trashCount/maxTrash;
+        //birdSource.volume = (1-trashCount)/maxTrash;
         if (trashCount <= 0)
         {
           StartCoroutine(OnTrashCleared());
