@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using GGJ2025.Utilities;
+using GGJ2025.Managers;
 using UnityEngine.Events;
 
 // using System.Numerics;
@@ -16,7 +17,7 @@ namespace GGJ2025
     public class EnemyNavigation : MonoBehaviour
     {
         #region Fields
-
+        
         [SerializeField]
         bool focusPlayerInsteadOfTrash;// Boolean to make enemy focus the player
 
@@ -40,6 +41,11 @@ namespace GGJ2025
 
         private Rigidbody2D rb;        //Rigidbody of this object
 
+        public AudioSource moveSource;
+        public AudioSource attackSource;
+
+        public AudioClip biteSFX;
+        public AudioClip spitSFX;
 
         public float minDistance = 1;  //Minimum distance enemy can be to player
 
@@ -54,6 +60,7 @@ namespace GGJ2025
 
         void Awake() {
             rb = gameObject.GetComponent<Rigidbody2D>();
+            
             animator = gameObject.GetComponent<Animator>();
             //Set target
             if (focusPlayerInsteadOfTrash) {
@@ -107,6 +114,8 @@ namespace GGJ2025
         void Bite() {
             moving = false;
             animator.SetTrigger("Bite");
+            attackSource.PlayOneShot(biteSFX);
+
             if (target.GetComponent<SoapedObject>()) {
             //TODO: Handle collision with soaped object
             } else if (target.CompareTag("Player")) {
@@ -123,11 +132,16 @@ namespace GGJ2025
         void ShootProjectile() {
             //Initiates a clone
             animator.SetTrigger("Bite");
+
+            attackSource.PlayOneShot(spitSFX);
+
             GameObject projClone = Instantiate(projectile, transform.position, transform.rotation);
             EnemyProjectileBehavior projBehavior = projClone.GetComponent<EnemyProjectileBehavior>();
             projBehavior.target = target;
             projBehavior.damage = damage;
             projBehavior.speed = projectileSpeed;
+
+            
         }
 
         /// <summary>
@@ -176,6 +190,7 @@ namespace GGJ2025
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
             } else {
                 moving = false;
+                
                 // animator.SetTrigger("Idle"); //Play idle animation
             }
         }
