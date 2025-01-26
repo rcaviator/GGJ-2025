@@ -136,7 +136,19 @@ MonoBehaviour:
   max: 100
   onUpdated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7338106670833030326}
+        m_TargetAssemblyTypeName: GGJ2025.PlayerController, GGJ2025
+        m_MethodName: OnHealthUpdated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onEmpty:
     m_PersistentCalls:
       m_Calls: []
