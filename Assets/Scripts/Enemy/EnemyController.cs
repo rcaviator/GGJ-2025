@@ -77,6 +77,7 @@ namespace GGJ2025
             //Updates target position
             targetPos = target.GetComponent<Transform>().position;
             MoveTowardsTarget();
+            UpdateAnimationDirection();
 
             //Increments delay counter variable
             delayCounter++;
@@ -176,6 +177,54 @@ namespace GGJ2025
             } else {
                 moving = false;
                 animator.SetTrigger("Idle"); //Play idle animation
+            }
+        }
+
+        /// <summary>
+        /// Gets the direction of the player
+        /// </summary>
+        private string GetAnimationDirection(float angle)
+        {
+            Direction direction = Direction.Right;
+
+            if (angle >= 337.5f || angle < 22.5f)
+                direction = Direction.Right;
+            else if (angle >= 22.5f && angle < 67.5f)
+                direction = Direction.UpRight;
+            else if (angle >= 67.5f && angle < 112.5f)
+                direction = Direction.Up;
+            else if (angle >= 112.5f && angle < 157.5f)
+                direction = Direction.UpLeft;
+            else if (angle >= 157.5f && angle < 202.5f)
+                direction = Direction.Left;
+            else if (angle >= 202.5f && angle < 247.5f)
+                direction = Direction.DownLeft;
+            else if (angle >= 247.5f && angle < 292.5f)
+                direction = Direction.Down;
+            else // angle >= 292.5f && angle < 337.5f
+                direction = Direction.DownRight;
+
+            return $"Trash_Move_{direction}";
+        }
+
+        /// <summary>
+        /// Updates the animation direction of the enemy
+        /// </summary>
+        private void UpdateAnimationDirection()
+        {
+            float angle = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
+            if (angle < 0)
+            {
+                angle += 360;
+            }
+
+            string direction = GetAnimationDirection(angle);
+
+            // if the animator is not playing the current direction, play it
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(direction) &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("trash_bite"))
+            {
+                animator.Play(direction);
             }
         }
 
