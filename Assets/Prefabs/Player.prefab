@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4586943116639689118}
   - component: {fileID: 5920076832541321396}
   - component: {fileID: 1168000855450552933}
+  - component: {fileID: 2260953769029013279}
+  - component: {fileID: 8387969201850789011}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,7 +155,19 @@ MonoBehaviour:
         m_CallState: 2
   onEmpty:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2260953769029013279}
+        m_TargetAssemblyTypeName: GGJ2025.Player.PlayerDeath, GGJ2025
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &5920076832541321396
 Rigidbody2D:
   serializedVersion: 5
@@ -227,3 +241,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2260953769029013279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320729930817435199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df25fa2235864c75bdea4fe2539df0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 8387969201850789011}
+--- !u!114 &8387969201850789011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320729930817435199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cfe13f5a224dbdb36be2427bcce57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menusScene:
+    m_AssetGUID: baebd63796cb8394c8ed626da9ad4c77
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
