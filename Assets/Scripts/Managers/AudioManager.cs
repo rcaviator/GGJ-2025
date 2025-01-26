@@ -35,7 +35,7 @@ namespace GGJ2025.Managers
     public enum UISoundEffect
     {
         // Default
-        None,
+        //None,
 
         // Menus
         MenuButtonFocused, MenuButtonClickAdvance, MenuButtonClickBack,
@@ -50,9 +50,16 @@ namespace GGJ2025.Managers
     public enum GameSoundEffect
     {
         // Default
-        None,
+        //None,
+
+        // Player
 
 
+        // Player Bubble
+        BubbleGunStart, BubbleGunLoop, BubbleHit,
+
+        // Enemies
+        TrashFootstep, TrashBite, TrashSpit,
     }
 
     #endregion
@@ -80,6 +87,7 @@ namespace GGJ2025.Managers
         AudioSource musicAudioSource;
         AudioSource uiAudioSource;
         AudioSource gameAudioSource;
+        AudioSource loopedGameAudioSource;
 
         // Music volume
         float musicVolume;
@@ -112,11 +120,15 @@ namespace GGJ2025.Managers
             musicAudioSource = audioController.AddComponent<AudioSource>();
             uiAudioSource = audioController.AddComponent<AudioSource>();
             gameAudioSource = audioController.AddComponent<AudioSource>();
+            loopedGameAudioSource = audioController.AddComponent<AudioSource>();
 
             // Set audio sources for ignore pausing
             musicAudioSource.ignoreListenerPause = true;
             uiAudioSource.ignoreListenerPause = true;
             gameAudioSource.ignoreListenerPause = false;
+            loopedGameAudioSource.ignoreListenerPause = false;
+
+            loopedGameAudioSource.loop = true;
         }
 
         #endregion
@@ -170,6 +182,7 @@ namespace GGJ2025.Managers
                 sfxVolume = value;
                 sfxVolume = Mathf.Clamp(sfxVolume, 0f, 1f);
                 gameAudioSource.volume = sfxVolume;
+                loopedGameAudioSource.volume = sfxVolume;
             }
         }
 
@@ -278,6 +291,25 @@ namespace GGJ2025.Managers
             if (GameSoundEffectsDict.ContainsKey(name))
             {
                 gameAudioSource.PlayOneShot(GameSoundEffectsDict[name]);
+            }
+        }
+
+
+        public void PlayLoopedGamePlaySoundEffect(GameSoundEffect name)
+        {
+            if (GameSoundEffectsDict.ContainsKey(name))
+            {
+                loopedGameAudioSource.clip = GameSoundEffectsDict[name];
+                loopedGameAudioSource.Play();
+            }
+        }
+
+
+        public void StopLoopedGameSoundEffect()
+        {
+            if (loopedGameAudioSource.isPlaying)
+            {
+                loopedGameAudioSource.Stop();
             }
         }
 

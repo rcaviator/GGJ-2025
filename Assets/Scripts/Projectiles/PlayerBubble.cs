@@ -1,6 +1,7 @@
 using UnityEngine;
 using GGJ2025.Utilities;
 using UnityEngine.InputSystem;
+using GGJ2025.Managers;
 
 namespace GGJ2025
 {
@@ -35,6 +36,11 @@ namespace GGJ2025
             transform.localScale = new Vector3(Size, Size, 1);
             Speed = Random.Range(Speed * Constants.PLAYER_BUBBLE_MINIMUM_SPEED_SCALE, Speed * Constants.PLAYER_BUBBLE_MAXIMUM_SPEED_SCALE);
             transform.Rotate(0, 0, Random.Range(-Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD, Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD));
+        }
+
+        private void OnDestroy()
+        {
+            AudioManager.Instance.PlayGamePlaySoundEffect(GameSoundEffect.BubbleHit);
         }
 
         #endregion

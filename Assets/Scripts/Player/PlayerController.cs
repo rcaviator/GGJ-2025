@@ -1,3 +1,4 @@
+using GGJ2025.Managers;
 using GGJ2025.Utilities;
 using System.Collections;
 using UnityEngine;
@@ -19,6 +20,9 @@ namespace GGJ2025
         Vector2 mousePosition;
 
         float bubbleSpawnCoolDown;
+        float bubbleGunStartSoundDuration;
+        float bubbleGunStartSoundTimer;
+        bool bubbleGunLoopSoundFired;
 
         #endregion
 
@@ -53,7 +57,6 @@ namespace GGJ2025
             Vector2.ClampMagnitude(moveAmount, 1);
             transform.Translate(moveAmount * Constants.PLAYER_SPEED * Time.deltaTime);
 
-            
             mousePosition = Mouse.current.position.ReadValue();
             
             // bubble gun control
@@ -70,18 +73,36 @@ namespace GGJ2025
             {
                 bubbleSpawnCoolDown += Time.deltaTime;
             }
+
+            // bubble gun sounds
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                AudioManager.Instance.PlayGamePlaySoundEffect(GameSoundEffect.BubbleGunStart);
+
+                bubbleGunStartSoundDuration = AudioManager.Instance.GetAudioClip(GameSoundEffect.BubbleGunStart).length;
+            }
+            
+
+            if (bubbleGunStartSoundTimer < bubbleGunStartSoundDuration && Mouse.current.leftButton.IsPressed())
+            {
+                bubbleGunStartSoundTimer += Time.deltaTime;
+            }
+            else if (bubbleGunStartSoundTimer > bubbleGunStartSoundDuration && Mouse.current.leftButton.IsPressed() && !bubbleGunLoopSoundFired)
+            {
+                bubbleGunLoopSoundFired = true;
+                AudioManager.Instance.PlayLoopedGamePlaySoundEffect(GameSoundEffect.BubbleGunLoop);
+            }
+            else if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                AudioManager.Instance.StopLoopedGameSoundEffect();
+                bubbleGunStartSoundTimer = 0;
+                bubbleGunLoopSoundFired = false;
+            }
         }
 
         #endregion
 
         #region Public Methods
-
-        
-
-        public void OnShoot(InputAction.CallbackContext context)
-        {
-            Instantiate(prefabLoader.Prefab);
-        }
 
         public void OnHealthUpdated(Health health)
         {
