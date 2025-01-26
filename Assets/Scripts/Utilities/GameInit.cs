@@ -1,4 +1,5 @@
 using System.Collections;
+using GGJ2025.Managers;
 using UnityEngine;
 
 namespace GGJ2025.Utilities
@@ -9,6 +10,7 @@ namespace GGJ2025.Utilities
 
     private IEnumerator Start()
     {
+      yield return AudioManager.Instance.WaitForInitialized();
       yield return menusSceneLoader.LoadOperation();
     }
   }
