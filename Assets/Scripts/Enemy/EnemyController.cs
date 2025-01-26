@@ -130,18 +130,19 @@ namespace GGJ2025
         /// Spawns a projectile that focuses selected target
         /// </summary>
         void ShootProjectile() {
-            //Initiates a clone
+            //Triggers bite animation
             animator.SetTrigger("Bite");
 
             attackSource.PlayOneShot(spitSFX);
-
+            
             GameObject projClone = Instantiate(projectile, transform.position, transform.rotation);
             EnemyProjectileBehavior projBehavior = projClone.GetComponent<EnemyProjectileBehavior>();
             projBehavior.target = target;
             projBehavior.damage = damage;
             projBehavior.speed = projectileSpeed;
 
-            
+
+           
         }
 
         /// <summary>
@@ -246,7 +247,7 @@ namespace GGJ2025
         IEnumerator OnTriggerEnter2D(Collider2D other) {
             // if (other.CompareTag("Trash Ball")) {
             //     Destroy(this.gameObject);
-            // } else 
+            // } else
             if (speed > 0 && other.TryGetComponent<PlayerBubble>(out _)) {
                 // Debug.Log("STOP IN THE NAME OF THE LOL");
                 float tempSpeed = speed;
