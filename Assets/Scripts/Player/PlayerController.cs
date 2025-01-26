@@ -23,6 +23,9 @@ namespace GGJ2025
         private readonly int isMovingHash = Animator.StringToHash("IsMoving");
         private readonly int isIdleHash = Animator.StringToHash("IsIdle");
 
+        private readonly int dieHash = Animator.StringToHash("Die");
+        private readonly int isDeadHash = Animator.StringToHash("IsDead");
+
         InputAction moveAction = null!;
         InputAction shootAction = null!;
 
@@ -33,6 +36,8 @@ namespace GGJ2025
         float bubbleGunStartSoundDuration;
         float bubbleGunStartSoundTimer;
         bool bubbleGunLoopSoundFired;
+
+        bool isDead = false;
 
         #endregion
 
@@ -137,7 +142,7 @@ namespace GGJ2025
 
         private void UpdateAnimations()
         {
-            if (animator == null) return; 
+            if (animator == null || isDead) return; 
             
             // Convert mouse position from screen to world coordinates:
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
@@ -182,6 +187,18 @@ namespace GGJ2025
         public void OnHealthUpdated(Health health)
         {
             EventManager.Invoke(CustomEventType.PlayerHealth, health.Current / health.Max);
+        }
+
+        public void OnPlayerDeath()
+        {
+            if (!isDead) {
+                isDead = true;
+                animator.SetTrigger(dieHash);
+                animator.SetBool(isDeadHash, true);
+
+                // Optionally disable movement and other player actions:
+                enabled = false;
+            }
         }
 
         #endregion
