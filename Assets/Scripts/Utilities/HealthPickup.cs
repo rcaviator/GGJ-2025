@@ -1,6 +1,4 @@
-using GGJ2025.Player;
 using GGJ2025.Utilities;
-using UnityEditor;
 using UnityEngine;
 
 namespace GGJ2025
@@ -10,25 +8,17 @@ namespace GGJ2025
     /// </summary>
     public class HealthPickup : MonoBehaviour
     {
-        // Health fields
-        Health Health;
-        HealthBar HealthBar;
-
-        private void Start()
-        {
-            Health.GetComponent<Health>();
-            HealthBar.GetComponent<HealthBar>();
-        }
         /// <summary>
         /// Replenish Player Health On Collision
         /// </summary>
         /// <param name="coll"></param>
-        public void OnCollisionEnter2D(Collision2D coll)
+        public void OnTriggerEnter2D(Collider2D coll)
         {
-            if (coll.gameObject.CompareTag("Player"))
+            if (coll.CompareTag("Player") && coll.TryGetComponent(out Health health))
             {
                 // replenish health
-                Health.Current = Health.Max;
+                health.Current += health.Max;
+
                 // destroy health object
                 Destroy(gameObject);
             }

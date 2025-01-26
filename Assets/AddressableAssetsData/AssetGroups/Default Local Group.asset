@@ -55,8 +55,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6f8ff30382729e1408a3d70995f7474d
-    m_Address: Assets/Prefabs/Levels/Level1.prefab
+  - m_GUID: 8480d1458509dca4f91319b018f62bee
+    m_Address: Assets/Scenes/SoundCredits.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -92,6 +92,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: baebd63796cb8394c8ed626da9ad4c77
     m_Address: Assets/Scenes/Game.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8152e8584be7214098cd025e2bae1cb
+    m_Address: Assets/Sounds/trashcompleteclean.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

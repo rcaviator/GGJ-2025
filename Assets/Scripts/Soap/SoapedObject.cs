@@ -1,4 +1,5 @@
 using System.Collections;
+using GGJ2025.Managers;
 using UnityEngine;
 
 namespace GGJ2025
@@ -35,6 +36,7 @@ namespace GGJ2025
         {
             // Call from animation event
             Cleaned = true;
+            AudioManager.Instance.PlayGamePlaySoundEffect(GameSoundEffect.TrashCleaned);
         }
 
         private void OnDestroy()

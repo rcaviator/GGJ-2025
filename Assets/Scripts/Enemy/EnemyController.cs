@@ -29,6 +29,8 @@ namespace GGJ2025
 
         public GameObject projectile = null;// Enemy projectile object
 
+        public GameObject bubble;
+
         public int damage;             //Damage for attacks
 
         public int attackDelay = 60;   //Delay between attacks in 1/60 second intervals
@@ -43,9 +45,13 @@ namespace GGJ2025
 
         public AudioSource moveSource;
         public AudioSource attackSource;
+        
+        public AudioSource stundSource;
 
         public AudioClip biteSFX;
         public AudioClip spitSFX;
+
+        public AudioClip stundSFX;
 
         public float minDistance = 1;  //Minimum distance enemy can be to player
 
@@ -252,9 +258,12 @@ namespace GGJ2025
                 // Debug.Log("STOP IN THE NAME OF THE LOL");
                 float tempSpeed = speed;
                 speed = 0;
+                bubble.SetActive(true);
+                stundSource.Play();
                 yield return new WaitForSeconds(2);
                 // Debug.Log("FREE2GO");
                 speed = tempSpeed;
+                bubble.SetActive(false);
             }
         }
 

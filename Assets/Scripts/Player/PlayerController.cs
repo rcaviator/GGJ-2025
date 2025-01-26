@@ -40,6 +40,9 @@ namespace GGJ2025
         float bubbleGunStartSoundTimer;
         bool bubbleGunLoopSoundFired;
 
+        float startMoveSoundDuration;
+        float startMoveSoundTimer;
+        bool moveLoopSoundFired;
         bool isDead = false;
 
         #endregion
@@ -97,6 +100,7 @@ namespace GGJ2025
             transform.Translate(moveAmount * Constants.PLAYER_SPEED * Time.deltaTime);
 
             mousePosition = Mouse.current.position.ReadValue();
+            HandlePlayerMoveSounds();
         }
 
         private void HandleShooting()
@@ -129,7 +133,10 @@ namespace GGJ2025
 
             HandleBubbleGunSounds();
         }
+        private void HandlePlayerMoveSounds()
+        {
 
+        }
         private void HandleBubbleGunSounds()
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
