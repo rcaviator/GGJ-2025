@@ -12,7 +12,7 @@ public class OperationExecutor : MonoBehaviour
     {
       if (instance is null)
       {
-        var obj = new GameObject();
+        var obj = new GameObject(nameof(OperationExecutor));
         DontDestroyOnLoad(obj);
         instance = obj.AddComponent<OperationExecutor>();
       }
