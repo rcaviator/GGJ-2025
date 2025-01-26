@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1343313358860999390}
   - component: {fileID: 8183819797289107965}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Dirty Boi
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9716981, g: 0.5271004, b: 0.5271004, a: 1}
+  m_Color: {r: 0.5566038, g: 0.28682423, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -165,12 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459aeb50b79085c40a338288a6742a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focusPlayerInsteadOfTrash: 0
+  focusPlayerInsteadOfTrash: 1
   isRanged: 0
   target: {fileID: 0}
-  projectile: {fileID: 0}
-  damage: 0
-  attackDelay: 60
+  projectile: {fileID: 1720404300839896077, guid: a016ceff921144484b33412ac9867490, type: 3}
+  damage: 15
+  attackDelay: 120
   projectileSpeed: 0
-  speed: 10
+  speed: 1
   minDistance: 1
+  biteDistance: 1
