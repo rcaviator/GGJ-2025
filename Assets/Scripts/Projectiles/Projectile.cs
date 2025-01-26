@@ -8,6 +8,7 @@ namespace GGJ2025
         #region Fields
 
         [SerializeField] private GameObject? impactEffect;
+        [SerializeField] private GameObject? deathEffect;
 
         #endregion
 
@@ -51,6 +52,10 @@ namespace GGJ2025
             else
             {
                 Destroy(gameObject);
+                if (deathEffect != null)
+                {
+                    Instantiate(deathEffect, transform.position, Quaternion.identity);
+                }
             }
         }
 

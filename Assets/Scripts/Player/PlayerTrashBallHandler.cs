@@ -1,3 +1,4 @@
+using GGJ2025.Soap;
 using GGJ2025.Utilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +10,7 @@ namespace GGJ2025.Player
     [SerializeField] private PrefabLoader projectileLoader = null!;
 
     private bool collectedTrash;
-    private SoapedObject? currentCleaned;
+    private Trash? currentTrash;
 
     public void OnInput(InputAction.CallbackContext context)
     {
@@ -28,9 +29,9 @@ namespace GGJ2025.Player
           projectile.GetComponent<PlayerTrashBall>().SetTargetLocation(mousePosition);
         }
       }
-      else if (currentCleaned != null)
+      else if (currentTrash != null && currentTrash.TryGetComponent(out SoapedObject soap) && soap.Cleaned)
       {
-        Destroy(currentCleaned.gameObject);
+        Destroy(currentTrash.gameObject);
         SetCollectedTrash(true);
       }
     }
@@ -43,17 +44,17 @@ namespace GGJ2025.Player
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      if (other.TryGetComponent(out SoapedObject soap) && soap.Cleaned)
+      if (other.TryGetComponent(out Trash trash))
       {
-        currentCleaned = soap;
+        currentTrash = trash;
       }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-      if (currentCleaned != null && other.TryGetComponent(out SoapedObject soap) && currentCleaned == soap)
+      if (currentTrash != null && other.TryGetComponent(out Trash trash) && currentTrash == trash)
       {
-        currentCleaned = null;
+        currentTrash = null;
       }
     }
   }
