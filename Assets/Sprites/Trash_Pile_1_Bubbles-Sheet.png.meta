@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: 8453449716f47c64ba327411098fa4c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5889850211187059909
+    second: Trash_Pile_1_Bubbles-Sheet_0
+  - first:
+      213: 8867467843546540863
+    second: Trash_Pile_1_Bubbles-Sheet_1
+  - first:
+      213: 937280400797615275
+    second: Trash_Pile_1_Bubbles-Sheet_2
+  - first:
+      213: -6794938552063690400
+    second: Trash_Pile_1_Bubbles-Sheet_3
+  - first:
+      213: -6266117725532869660
+    second: Trash_Pile_1_Bubbles-Sheet_4
+  - first:
+      213: 2779061846434751127
+    second: Trash_Pile_1_Bubbles-Sheet_5
+  - first:
+      213: -7619415373718077412
+    second: Trash_Pile_1_Bubbles-Sheet_6
+  - first:
+      213: -908426142844275690
+    second: Trash_Pile_1_Bubbles-Sheet_7
+  - first:
+      213: 1727343285773512026
+    second: Trash_Pile_1_Bubbles-Sheet_8
+  - first:
+      213: -6065420842732660673
+    second: Trash_Pile_1_Bubbles-Sheet_9
+  - first:
+      213: -2996379653596350209
+    second: Trash_Pile_1_Bubbles-Sheet_10
+  - first:
+      213: -7965026001922742530
+    second: Trash_Pile_1_Bubbles-Sheet_11
+  - first:
+      213: 6416516775628529523
+    second: Trash_Pile_1_Bubbles-Sheet_12
+  - first:
+      213: 8844778480854841741
+    second: Trash_Pile_1_Bubbles-Sheet_13
+  - first:
+      213: 7276408539855257476
+    second: Trash_Pile_1_Bubbles-Sheet_14
+  - first:
+      213: 6447787292244910179
+    second: Trash_Pile_1_Bubbles-Sheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b339fed407c034ea0800000000000000
+      internalID: -5889850211187059909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3b6ac795039f0b70800000000000000
+      internalID: 8867467843546540863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba44a700f83e10d00800000000000000
+      internalID: 937280400797615275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 069f2a5536783b1a0800000000000000
+      internalID: -6794938552063690400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eba5d0c0274a09a0800000000000000
+      internalID: -6266117725532869660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 792a5957606319620800000000000000
+      internalID: 2779061846434751127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1042654616624690800000000000000
+      internalID: -7619415373718077412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 614b6137c3f9463f0800000000000000
+      internalID: -908426142844275690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5dafa90191c8f710800000000000000
+      internalID: 1727343285773512026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f385ba721eb43dba0800000000000000
+      internalID: -6065420842732660673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 15
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff87e2f9498ba66d0800000000000000
+      internalID: -2996379653596350209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef625a04d0b867190800000000000000
+      internalID: -7965026001922742530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f5ca2e20c0c0950800000000000000
+      internalID: 6416516775628529523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 15
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d893f5caa27feba70800000000000000
+      internalID: 8844778480854841741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 7
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48ff0b2d30ffaf460800000000000000
+      internalID: 7276408539855257476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trash_Pile_1_Bubbles-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 7
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360298561642b7950800000000000000
+      internalID: 6447787292244910179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
