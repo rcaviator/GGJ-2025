@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using GGJ2025.Utilities;
+using UnityEngine.Events;
 
 // using System.Numerics;
 using UnityEngine;
@@ -15,39 +16,45 @@ namespace GGJ2025
     public class EnemyNavigation : MonoBehaviour
     {
         #region Fields
-        // Boolean to make enemy focus the player
-        [SerializeField]
-        bool focusPlayerInsteadOfTrash;
 
-        // Boolean for if enemy is ranged rather than melee
         [SerializeField]
-        bool isRanged = false;
-        // Intended target
-        public GameObject target;
-        // Enemy projectile object
-        public GameObject projectile = null;
-        //Damage for attacks
-        public int damage;
-        //Delay between attacks in 1/60 second intervals
-        public int attackDelay = 60;
-        //Tick counter variable for attack delay
-        private int delayCounter = 0;
-        //Projectile speed, m/s
-        public float projectileSpeed;
-        //Speed of enemy, m/s
-        public float speed = 10;
-        //Rigidbody of this object
-        private Rigidbody2D rb;
-        //Target position
-        //Minimum distance enemy can be to player
-        public float minDistance = 1;
-        //Distance required to bite target
-        public float biteDistance = 1;
-        Vector3 targetPos;
+        bool focusPlayerInsteadOfTrash;// Boolean to make enemy focus the player
+
+
+        [SerializeField]
+        bool isRanged = false;         // Boolean for if enemy is ranged rather than melee
+
+        public GameObject target;      // Intended target
+
+        public GameObject projectile = null;// Enemy projectile object
+
+        public int damage;             //Damage for attacks
+
+        public int attackDelay = 60;   //Delay between attacks in 1/60 second intervals
+
+        private int delayCounter = 0;  //Tick counter variable for attack delay
+
+        public float projectileSpeed;  //Projectile speed, m/s
+
+        public float speed = 10;       //Speed of enemy, m/s
+
+        private Rigidbody2D rb;        //Rigidbody of this object
+
+
+        public float minDistance = 1;  //Minimum distance enemy can be to player
+
+        public float biteDistance = 1; //Distance required to bite target
+
+        Vector3 targetPos;             //Target position
+
+        public Animator animator;      //Animator component
+
+        private bool moving = false;
         #endregion
 
         void Awake() {
             rb = gameObject.GetComponent<Rigidbody2D>();
+            animator = gameObject.GetComponent<Animator>();
             //Set target
             if (focusPlayerInsteadOfTrash) {
                 //Set player as target
@@ -60,7 +67,6 @@ namespace GGJ2025
         }
         void Start()
         {
-
             //Sets a reference to target's position
             targetPos = target.GetComponent<Transform>().position;
         }
@@ -98,7 +104,8 @@ namespace GGJ2025
         /// Bites a thing
         /// </summary>
         void Bite() {
-
+            moving = false;
+            animator.SetTrigger("Bite");
             if (target.GetComponent<SoapedObject>()) {
             //TODO: Handle collision with soaped object
             } else if (target.tag == "Player") {
@@ -107,8 +114,6 @@ namespace GGJ2025
             } else {
                 return;
             }
-
-            //TODO: Damage target
         }
 
         /// <summary>
@@ -116,12 +121,12 @@ namespace GGJ2025
         /// </summary>
         void ShootProjectile() {
             //Initiates a clone
+            animator.SetTrigger("Bite");
             GameObject projClone = Instantiate(projectile, transform.position, transform.rotation);
             EnemyProjectileBehavior projBehavior = projClone.GetComponent<EnemyProjectileBehavior>();
             projBehavior.target = target;
             projBehavior.damage = damage;
             projBehavior.speed = projectileSpeed;
-
         }
 
         /// <summary>
@@ -161,8 +166,16 @@ namespace GGJ2025
             // Debug.Log(distance);
             // Check if the distance to target is greater than or equal to minimum distance
             if (distance >= minDistance) {
+                moving = true;
                 // Move towards target.
+                if (moving) {
+                    animator.SetTrigger("Move");
+                    moving = false;
+                }
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            } else {
+                moving = false;
+                animator.SetTrigger("Idle"); //Play idle animation
             }
         }
 
@@ -178,6 +191,18 @@ namespace GGJ2025
                 Debug.Log("FREE2GO");
                 speed = tempSpeed;
             }
+        }
+
+        void MovingPing() {
+            Debug.Log("Schmoovin\'");
+        }
+
+        void IdlePing() {
+            Debug.Log("Stop");
+        }
+
+        void BitePing() {
+            Debug.Log("Chompp");
         }
     }
 }
