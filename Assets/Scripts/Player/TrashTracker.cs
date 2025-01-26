@@ -11,13 +11,13 @@ namespace GGJ2025.Player
         [SerializeField] AudioSource birdSource;
 
         private int trashCount;
-    private int maxTrash;
+    private float maxTrash;
 
     private void Awake()
     {
       EventManager.StartListening<bool>(CustomEventType.Trash, OnTrash);
       
-      maxTrash = trashCount;
+      
     }
 
     private void OnTrash(bool exists)
@@ -25,12 +25,14 @@ namespace GGJ2025.Player
       if (exists)
       {
         trashCount++;
+        maxTrash = trashCount;
       }
       else
       {
         trashCount--;
-        //windSource.volume = trashCount/maxTrash;
-        //birdSource.volume = (1-trashCount)/maxTrash;
+        windSource.volume = trashCount/(maxTrash*1.7f);
+        birdSource.volume = (maxTrash-trashCount)/maxTrash;
+
         if (trashCount <= 0)
         {
           StartCoroutine(OnTrashCleared());
