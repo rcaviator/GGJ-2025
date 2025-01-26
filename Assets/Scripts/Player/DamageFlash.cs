@@ -7,7 +7,7 @@ namespace GGJ2025.Player
   {
     private Animator animator = null!;
     private static readonly int FlashParam = Animator.StringToHash("Flash");
-    private float? previousHealth;
+    private float previousHealth = 1;
 
     private void Start()
     {

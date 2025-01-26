@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7182494382281617664}
   - component: {fileID: 1343313358860999390}
   - component: {fileID: 8183819797289107965}
+  - component: {fileID: 196394476945964308}
+  - component: {fileID: 8429961084225290496}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9716981, g: 0.5271004, b: 0.5271004, a: 1}
+  m_Sprite: {fileID: 3869175668988449895, guid: 7f3807a883c394ab1a6d0f99af1e3281, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,7 +107,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -165,6 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459aeb50b79085c40a338288a6742a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving:
+    m_PersistentCalls:
+      m_Calls: []
   focusPlayerInsteadOfTrash: 0
   isRanged: 0
   target: {fileID: 0}
@@ -174,3 +179,43 @@ MonoBehaviour:
   projectileSpeed: 0
   speed: 10
   minDistance: 1
+  biteDistance: 1
+--- !u!111 &196394476945964308
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963589072640576457}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!95 &8429961084225290496
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963589072640576457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a881bc203d2c46f3a4de092166c9abd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+

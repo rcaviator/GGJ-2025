@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - PlayerProjectile
+  - Bubble
+  - Trash Ball
   layers:
   - Default
   - TransparentFX
