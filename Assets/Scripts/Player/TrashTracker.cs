@@ -29,8 +29,8 @@ namespace GGJ2025.Player
       else
       {
         trashCount--;
-        windSource.volume = trashCount/maxTrash;
-        birdSource.volume = (1-trashCount)/maxTrash;
+        //windSource.volume = trashCount/maxTrash;
+        //birdSource.volume = (1-trashCount)/maxTrash;
         if (trashCount <= 0)
         {
           StartCoroutine(OnTrashCleared());
