@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8895378041406763947}
   - component: {fileID: 6762654704820855630}
   - component: {fileID: 6178151682584675407}
+  - component: {fileID: 621499781562725542}
   m_Layer: 0
   m_Name: BubbleHit
   m_TagString: Untagged
@@ -110,3 +111,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &621499781562725542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799182720395190739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c1621b459a24641a442a79e0576772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
