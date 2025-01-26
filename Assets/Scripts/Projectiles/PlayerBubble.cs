@@ -24,18 +24,23 @@ namespace GGJ2025
         protected override void Awake()
         {
             base.Awake();
-
             SetInitialData(Constants.Projectiles.PlayerBubble);
 
-            Direction = Mouse.current.position.ReadValue();
-            Direction = Camera.main.ScreenToWorldPoint(Direction);
-            Direction = Direction - (Vector2)transform.position;
-            Direction = Direction.normalized;
-
-            Size = Random.Range(Size * Constants.PLAYER_BUBBLE_MINIMUM_SIZE_SCALE, Size * Constants.PLAYER_BUBBLE_MAXIMUM_SIZE_SCALE);
+            // Remove the direction calculation from here since we'll set it externally
+            Size = Random.Range(Size * Constants.PLAYER_BUBBLE_MINIMUM_SIZE_SCALE, 
+                            Size * Constants.PLAYER_BUBBLE_MAXIMUM_SIZE_SCALE);
             transform.localScale = new Vector3(Size, Size, 1);
-            Speed = Random.Range(Speed * Constants.PLAYER_BUBBLE_MINIMUM_SPEED_SCALE, Speed * Constants.PLAYER_BUBBLE_MAXIMUM_SPEED_SCALE);
-            transform.Rotate(0, 0, Random.Range(-Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD, Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD));
+            Speed = Random.Range(Speed * Constants.PLAYER_BUBBLE_MINIMUM_SPEED_SCALE, 
+                            Speed * Constants.PLAYER_BUBBLE_MAXIMUM_SPEED_SCALE);
+        }
+
+        public void SetInitialDirection(Vector2 direction) 
+        {
+            Direction = direction;
+
+            // Apply random spread after setting the base direction:
+            transform.Rotate(0, 0, Random.Range(-Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD, 
+                                          Constants.PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD));
         }
 
         private void OnDestroy()

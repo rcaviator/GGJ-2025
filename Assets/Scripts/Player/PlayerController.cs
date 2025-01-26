@@ -13,6 +13,9 @@ namespace GGJ2025
         [SerializeField]
         PrefabLoader prefabLoader = null!;
 
+        [SerializeField]
+        private GunController gunController = null!;
+
         // Animation-related fields:
         [SerializeField]
         private Animator animator = null!;      // Reference to animator component
@@ -45,6 +48,8 @@ namespace GGJ2025
 
         public bool Initialized
         { get; private set; }
+
+        public Vector2 MovementAmount => moveAmount;
 
         #endregion
 
@@ -96,13 +101,25 @@ namespace GGJ2025
 
         private void HandleShooting()
         {
+            // Don't allow shooting if there's no gun:
+            if (gunController == null) return;
+
             if (bubbleSpawnCoolDown >= Constants.PLAYER_BUBBLE_PROJECTILE_COOL_DOWN)
             {
                 if (Mouse.current.leftButton.isPressed)
                 {
                     bubbleSpawnCoolDown = 0;
 
-                    PlayerBubble bubble = Instantiate(prefabLoader.Prefab, transform.position, Quaternion.identity).GetComponent<PlayerBubble>();
+                    // Spawn the bubble at the gun's fire position
+                    PlayerBubble bubble = Instantiate(
+                        prefabLoader.Prefab, 
+                        gunController.FirePosition, 
+                        Quaternion.identity
+                    ).GetComponent<PlayerBubble>();
+
+                    if (bubble != null) {
+                        bubble.SetInitialDirection(gunController.FireDirection);
+                    }
                 }
             }
             else

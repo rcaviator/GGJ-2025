@@ -112,9 +112,9 @@ namespace GGJ2025.Utilities
 
         #region Player Bubble
 
-        public const float PLAYER_BUBBLE_MINIMUM_SIZE_SCALE = .75f;
+        public const float PLAYER_BUBBLE_MINIMUM_SIZE_SCALE = .5f;
         public const float PLAYER_BUBBLE_MAXIMUM_SIZE_SCALE = 1.25f;
-        public const float PLAYER_BUBBLE_MINIMUM_SPEED_SCALE = .75f;
+        public const float PLAYER_BUBBLE_MINIMUM_SPEED_SCALE = .5f;
         public const float PLAYER_BUBBLE_MAXIMUM_SPEED_SCALE = .75f;
         public const float PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD = 15f;
 
