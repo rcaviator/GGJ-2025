@@ -10,11 +10,13 @@ namespace GGJ2025
         public float speed;
         //Damage of projectile
         public int damage;
-        // Projectile's intended target
+        // Projectile's intended target and its transform
         public GameObject target;
+        private Transform targetT;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            targetT = target.GetComponent<Transform>();
             //TODO: ???
         }
 
@@ -24,8 +26,8 @@ namespace GGJ2025
         /// <summary>
         /// Advances projectile towards target
         /// </summary>
-            Vector3 direction = target.transform.position - transform.position;
-            GetComponent<Rigidbody2D>().linearVelocity = direction.normalized * speed;
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position,targetT.position, step);
         }
 
         /// <summary>
@@ -40,6 +42,7 @@ namespace GGJ2025
                 //TODO: Handle collision with player
                 //TODO: Damage player
             }
+            Destroy(this);
         }
     }
 }
