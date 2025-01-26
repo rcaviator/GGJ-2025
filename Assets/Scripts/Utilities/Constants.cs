@@ -105,7 +105,7 @@ namespace GGJ2025.Utilities
         #region Player
 
         public const float PLAYER_HEALTH = 100f;
-        public const float PLAYER_SPEED = 10f;
+        public const float PLAYER_SPEED = 5.0f;
         public const float PLAYER_BUBBLE_PROJECTILE_COOL_DOWN = .1f;
 
         #endregion
