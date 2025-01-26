@@ -14,10 +14,14 @@ namespace GGJ2025
         // Projectile's intended target and its transform
         public GameObject target;
         private Transform targetT;
+
+        private Vector3 targetPos; //Position for bullets to target
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            targetT = target.GetComponent<Transform>();
+            targetPos = target.GetComponent<Transform>().position;
+            targetPos = transform.position + (targetPos - transform.position).normalized * 1000f;
             //TODO: ???
         }
 
@@ -28,7 +32,7 @@ namespace GGJ2025
         /// Advances projectile towards target
         /// </summary>
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position,targetT.position, step);
+            transform.position = Vector3.MoveTowards(transform.position,targetPos, step);
         }
 
         /// <summary>
@@ -40,8 +44,7 @@ namespace GGJ2025
             if (colTarget.GetComponent<SoapedObject>()) {
                 //TODO: Handle collision with soaped object
             } else if (colTarget.tag == "Player") {
-                GameObject player = col.gameObject;
-                player.GetComponent<Health>().Current -= damage;
+                colTarget.GetComponent<Health>().Current -= damage;
             } else {
                 return;
             }
