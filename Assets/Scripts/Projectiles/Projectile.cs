@@ -7,7 +7,7 @@ namespace GGJ2025
     {
         #region Fields
 
-
+        [SerializeField] private GameObject? impactEffect;
 
         #endregion
 
@@ -86,6 +86,11 @@ namespace GGJ2025
             if (shouldDamage && other.TryGetComponent(out Health health))
             {
                 health.Current -= Damage;
+            }
+
+            if(impactEffect != null)
+            {
+                Instantiate(impactEffect, transform.position, Quaternion.identity);
             }
 
             if (shouldDestroy)
