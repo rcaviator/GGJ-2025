@@ -13,6 +13,19 @@ namespace GGJ2025
         [SerializeField]
         PrefabLoader prefabLoader = null!;
 
+        // Animation-related fields:
+        [SerializeField]
+        private Animator animator = null!;      // Reference to animator component
+
+        // Animation parameter hashes for better performance:
+        private readonly int horizantalHash = Animator.StringToHash("Horizontal");
+        private readonly int verticalHash = Animator.StringToHash("Vertical");
+        private readonly int isMovingHash = Animator.StringToHash("IsMoving");
+        private readonly int isIdleHash = Animator.StringToHash("IsIdle");
+
+        private readonly int dieHash = Animator.StringToHash("Die");
+        private readonly int isDeadHash = Animator.StringToHash("IsDead");
+
         InputAction moveAction = null!;
         InputAction shootAction = null!;
 
@@ -23,6 +36,8 @@ namespace GGJ2025
         float bubbleGunStartSoundDuration;
         float bubbleGunStartSoundTimer;
         bool bubbleGunLoopSoundFired;
+
+        bool isDead = false;
 
         #endregion
 
@@ -37,10 +52,18 @@ namespace GGJ2025
 
         private IEnumerator Start()
         {
+            // Wait for prefab loader:
             yield return prefabLoader.WaitForInitialized();
 
+            // Get input actions:
             moveAction = InputSystem.actions.FindAction("Move");
             shootAction = InputSystem.actions.FindAction("Attack");
+
+            // Get the Animator component:
+            animator = GetComponent<Animator>();
+            if (animator == null) {
+                Debug.LogError("PlayerController: Animator component not found!");
+            }
 
             Initialized = true;
         }
@@ -52,14 +75,27 @@ namespace GGJ2025
                 return;
             }
 
-            // movement
+            HandleMovement();
+            HandleShooting();
+            UpdateAnimations();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void HandleMovement()
+        {
             moveAmount = moveAction.ReadValue<Vector2>();
             Vector2.ClampMagnitude(moveAmount, 1);
+            
             transform.Translate(moveAmount * Constants.PLAYER_SPEED * Time.deltaTime);
 
             mousePosition = Mouse.current.position.ReadValue();
-            
-            // bubble gun control
+        }
+
+        private void HandleShooting()
+        {
             if (bubbleSpawnCoolDown >= Constants.PLAYER_BUBBLE_PROJECTILE_COOL_DOWN)
             {
                 if (Mouse.current.leftButton.isPressed)
@@ -74,7 +110,11 @@ namespace GGJ2025
                 bubbleSpawnCoolDown += Time.deltaTime;
             }
 
-            // bubble gun sounds
+            HandleBubbleGunSounds();
+        }
+
+        private void HandleBubbleGunSounds()
+        {
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 AudioManager.Instance.PlayGamePlaySoundEffect(GameSoundEffect.BubbleGunStart);
@@ -100,6 +140,46 @@ namespace GGJ2025
             }
         }
 
+        private void UpdateAnimations()
+        {
+            if (animator == null || isDead) return; 
+            
+            // Convert mouse position from screen to world coordinates:
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
+
+            bool isMoving = moveAmount.magnitude > 0.01f;
+            bool isShooting = Mouse.current.leftButton.isPressed;
+
+            Vector2 currentDirection;
+
+            if (isShooting)
+            {
+                // Use aim direction when shooting
+                currentDirection = (mouseWorldPosition - transform.position).normalized;
+            }
+            else if (isMoving)
+            {
+                // Use movement direction when moving
+                currentDirection = moveAmount.normalized;                  
+            }
+            else 
+            {
+                // When idle, keep the last direction but update the idle state
+                currentDirection = new Vector2(
+                    animator.GetFloat(horizantalHash),
+                    animator.GetFloat(verticalHash)
+                );
+            }
+
+            // Update the direction in the animator
+            animator.SetFloat(horizantalHash, currentDirection.x);
+            animator.SetFloat(verticalHash, currentDirection.y);
+
+            // Update state booleans
+            animator.SetBool(isMovingHash, isMoving);
+            animator.SetBool(isIdleHash, !isMoving && !isShooting);
+        }
+
         #endregion
 
         #region Public Methods
@@ -107,6 +187,18 @@ namespace GGJ2025
         public void OnHealthUpdated(Health health)
         {
             EventManager.Invoke(CustomEventType.PlayerHealth, health.Current / health.Max);
+        }
+
+        public void OnPlayerDeath()
+        {
+            if (!isDead) {
+                isDead = true;
+                animator.SetTrigger(dieHash);
+                animator.SetBool(isDeadHash, true);
+
+                // Optionally disable movement and other player actions:
+                enabled = false;
+            }
         }
 
         #endregion
