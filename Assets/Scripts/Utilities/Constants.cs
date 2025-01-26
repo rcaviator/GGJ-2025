@@ -110,6 +110,16 @@ namespace GGJ2025.Utilities
 
         #endregion
 
+        #region Player Bubble
+
+        public const float PLAYER_BUBBLE_MINIMUM_SIZE_SCALE = .75f;
+        public const float PLAYER_BUBBLE_MAXIMUM_SIZE_SCALE = 1.25f;
+        public const float PLAYER_BUBBLE_MINIMUM_SPEED_SCALE = .75f;
+        public const float PLAYER_BUBBLE_MAXIMUM_SPEED_SCALE = .75f;
+        public const float PLAYER_BUBBLE_MAXIMUM_ANGLE_SPREAD = 15f;
+
+        #endregion
+
         #region Game Enums and Utilities
 
         /// <summary>
@@ -186,7 +196,7 @@ namespace GGJ2025.Utilities
 
             Projectile playerBubble = new Projectile()
             {
-                SIZE = 1,
+                SIZE = 2,
                 SPEED = 5,
                 LIFETIME = 2,
                 DAMAGE = 1,
