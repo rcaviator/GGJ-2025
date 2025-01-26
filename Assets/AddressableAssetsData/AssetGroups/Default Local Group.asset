@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: af34b07db050f404c8532e5e1a9c351d
   m_SerializeEntries:
+  - m_GUID: 0c433977b5ec60a42ac62396b3398974
+    m_Address: Assets/Prefabs/PlayerTrashBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 149aaa07b9317844b82a5d58f1f4b867
     m_Address: AudioMappings
     m_ReadOnly: 0

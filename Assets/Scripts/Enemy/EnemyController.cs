@@ -109,8 +109,8 @@ namespace GGJ2025
             animator.SetTrigger("Bite");
             if (target.GetComponent<SoapedObject>()) {
             //TODO: Handle collision with soaped object
-            } else if (target.tag == "Player") {
-                Debug.Log("om nom");
+            } else if (target.CompareTag("Player")) {
+                // Debug.Log("om nom");
                 target.GetComponent<Health>().Current -= damage;
             } else {
                 return;

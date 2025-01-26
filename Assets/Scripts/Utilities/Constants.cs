@@ -130,6 +130,7 @@ namespace GGJ2025.Utilities
             None,
             PlayerBubble,
             EnemyProjectile,
+            PlayerTrashBall
         }
 
         /// <summary>
@@ -217,6 +218,14 @@ namespace GGJ2025.Utilities
             projectileDic!.Add(Projectiles.EnemyProjectile, enemyProjectile);
 
             #endregion
+
+            projectileDic.Add(Projectiles.PlayerTrashBall, new()
+            {
+                SIZE = 2,
+                SPEED = 6,
+                LIFETIME = float.MaxValue,
+                DAMAGE = 0,
+            });
         }
 
         #endregion

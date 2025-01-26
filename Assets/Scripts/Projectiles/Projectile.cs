@@ -23,7 +23,7 @@ namespace GGJ2025
         { get; set; }
 
         public float LifeTime
-        { get; private set; }
+        { get; protected set; }
 
         public float CurrentTime
         { get; private set; }
@@ -88,13 +88,13 @@ namespace GGJ2025
                 health.Current -= Damage;
             }
 
-            if(impactEffect != null)
-            {
-                Instantiate(impactEffect, transform.position, Quaternion.identity);
-            }
-
             if (shouldDestroy)
             {
+                if (impactEffect != null)
+                {
+                    Instantiate(impactEffect, transform.position, Quaternion.identity);
+                }
+
                 Destroy(gameObject);
             }
         }

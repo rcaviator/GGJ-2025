@@ -60,7 +60,7 @@ namespace GGJ2025
 
         protected override (bool shouldDamage, bool shouldDestroy) GetHitHandling(Collider2D other)
         {
-            var shouldDestroy = !other.CompareTag("Player");
+            var shouldDestroy = !other.CompareTag("Player") && !other.isTrigger;
             var shouldDamage = shouldDestroy && !other.TryGetComponent<SoapedObject>(out _);
             return (shouldDamage, shouldDestroy);
         }
