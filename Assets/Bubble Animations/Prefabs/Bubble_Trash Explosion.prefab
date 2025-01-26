@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7812931703112999288}
   - component: {fileID: 6306521474220836549}
   - component: {fileID: 862446075099782596}
+  - component: {fileID: 7165683658138686050}
   m_Layer: 0
   m_Name: Bubble_Trash Explosion
   m_TagString: Untagged
@@ -110,3 +111,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7165683658138686050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663043319503266935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c1621b459a24641a442a79e0576772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
