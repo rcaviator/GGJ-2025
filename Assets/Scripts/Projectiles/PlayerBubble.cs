@@ -42,7 +42,12 @@ namespace GGJ2025
 
         #region Private Methods
 
-
+        protected override (bool shouldDamage, bool shouldDestroy) GetHitHandling(Collider2D other)
+        {
+            var shouldDestroy = !other.CompareTag("Player");
+            var shouldDamage = shouldDestroy && !other.TryGetComponent<SoapedObject>(out _);
+            return (shouldDamage, shouldDestroy);
+        }
 
         #endregion
     }

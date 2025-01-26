@@ -3,7 +3,7 @@ using GGJ2025.Utilities;
 
 namespace GGJ2025
 {
-    public class Projectile : MonoBehaviour
+    public abstract class Projectile : MonoBehaviour
     {
         #region Fields
 
@@ -46,7 +46,7 @@ namespace GGJ2025
             {
                 CurrentTime += Time.deltaTime;
 
-                transform.Translate(Direction * Speed * Time.deltaTime);
+                transform.Translate(Direction * (Speed * Time.deltaTime));
             }
             else
             {
@@ -74,11 +74,25 @@ namespace GGJ2025
             Damage = retrievedProjectile.DAMAGE;
         }
 
+        protected abstract (bool shouldDamage, bool shouldDestroy) GetHitHandling(Collider2D other);
+
         #endregion
 
         #region Private Methods
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var (shouldDamage, shouldDestroy) = GetHitHandling(other);
+            if (shouldDamage && other.TryGetComponent(out Health health))
+            {
+                health.Current -= Damage;
+            }
 
+            if (shouldDestroy)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         #endregion
     }
