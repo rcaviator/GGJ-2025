@@ -1,6 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using GGJ2025.Operations;
+using GGJ2025.Utilities;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace GGJ2025.Managers
 {
@@ -30,7 +35,7 @@ namespace GGJ2025.Managers
     public enum UISoundEffect
     {
         // Default
-        None,
+        //None,
 
         // Menus
         MenuButtonFocused, MenuButtonClickAdvance, MenuButtonClickBack,
@@ -45,9 +50,16 @@ namespace GGJ2025.Managers
     public enum GameSoundEffect
     {
         // Default
-        None,
+        //None,
+
+        // Player
 
 
+        // Player Bubble
+        BubbleGunStart, BubbleGunLoop, BubbleHit,
+
+        // Enemies
+        TrashFootstep, TrashBite, TrashSpit,
     }
 
     #endregion
@@ -56,7 +68,7 @@ namespace GGJ2025.Managers
     /// AudioManager is the singleton that handles all the audio in the game.
     /// </summary>
     [Serializable]
-    class AudioManager
+    class AudioManager : IAsyncInitialized
     {
         #region Fields
 
@@ -64,9 +76,9 @@ namespace GGJ2025.Managers
         static AudioManager? instance;
 
         // Music, UI, and game sound effect dictionaries
-        Dictionary<MusicSoundEffect, AudioClip> musicSoundEffectsDict;
-        Dictionary<UISoundEffect, AudioClip> uiSoundEffectsDict;
-        Dictionary<GameSoundEffect, AudioClip> GameSoundEffectsDict;
+        Dictionary<MusicSoundEffect, AudioClip> musicSoundEffectsDict = new();
+        Dictionary<UISoundEffect, AudioClip> uiSoundEffectsDict = new();
+        Dictionary<GameSoundEffect, AudioClip> GameSoundEffectsDict = new();
 
         // GameObject for audio sources
         GameObject audioController;
@@ -75,6 +87,7 @@ namespace GGJ2025.Managers
         AudioSource musicAudioSource;
         AudioSource uiAudioSource;
         AudioSource gameAudioSource;
+        AudioSource loopedGameAudioSource;
 
         // Music volume
         float musicVolume;
@@ -97,37 +110,7 @@ namespace GGJ2025.Managers
         /// </summary>
         private AudioManager()
         {
-            // Create and populate the music dictionary
-            musicSoundEffectsDict = new Dictionary<MusicSoundEffect, AudioClip>()
-            { 
-                // Leave MusicSoundEffect.None out
-                { MusicSoundEffect.MainMenu, Resources.Load<AudioClip>("Audio/Music/") },
-                { MusicSoundEffect.Level1, Resources.Load<AudioClip>("Audio/Music/") },
-                { MusicSoundEffect.Win, Resources.Load<AudioClip>("Audio/Music/") },
-                { MusicSoundEffect.Lose, Resources.Load<AudioClip>("Audio/Music/") },
-                { MusicSoundEffect.Credits, Resources.Load<AudioClip>("Audio/Music/") },
-            };
-
-            // Create and populate the UI dictionary
-            uiSoundEffectsDict = new Dictionary<UISoundEffect, AudioClip>()
-            {
-                // Leave UISoundEffect.None out
-                { UISoundEffect.MenuButtonFocused, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.MenuButtonClickAdvance, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.MenuButtonClickBack, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.Generic, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.Pause, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.Unpause, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.Exit, Resources.Load<AudioClip>("Audio/UI/") },
-                { UISoundEffect.Reset, Resources.Load<AudioClip>("Audio/UI/") },
-            };
-
-            // Create and populate the game dictionary
-            GameSoundEffectsDict = new Dictionary<GameSoundEffect, AudioClip>()
-            {
-                // Leave GameSoundEffect.None out
-                //{ GameSoundEffect.None , Resources.Load<AudioClip>("Audio/Effects/")},
-            };
+            Initialize().Execute();
 
             // Create the audio GameObject and save it
             audioController = new GameObject("AudioController");
@@ -137,11 +120,15 @@ namespace GGJ2025.Managers
             musicAudioSource = audioController.AddComponent<AudioSource>();
             uiAudioSource = audioController.AddComponent<AudioSource>();
             gameAudioSource = audioController.AddComponent<AudioSource>();
+            loopedGameAudioSource = audioController.AddComponent<AudioSource>();
 
             // Set audio sources for ignore pausing
             musicAudioSource.ignoreListenerPause = true;
             uiAudioSource.ignoreListenerPause = true;
             gameAudioSource.ignoreListenerPause = false;
+            loopedGameAudioSource.ignoreListenerPause = false;
+
+            loopedGameAudioSource.loop = true;
         }
 
         #endregion
@@ -195,6 +182,7 @@ namespace GGJ2025.Managers
                 sfxVolume = value;
                 sfxVolume = Mathf.Clamp(sfxVolume, 0f, 1f);
                 gameAudioSource.volume = sfxVolume;
+                loopedGameAudioSource.volume = sfxVolume;
             }
         }
 
@@ -306,6 +294,25 @@ namespace GGJ2025.Managers
             }
         }
 
+
+        public void PlayLoopedGamePlaySoundEffect(GameSoundEffect name)
+        {
+            if (GameSoundEffectsDict.ContainsKey(name))
+            {
+                loopedGameAudioSource.clip = GameSoundEffectsDict[name];
+                loopedGameAudioSource.Play();
+            }
+        }
+
+
+        public void StopLoopedGameSoundEffect()
+        {
+            if (loopedGameAudioSource.isPlaying)
+            {
+                loopedGameAudioSource.Stop();
+            }
+        }
+
         /// <summary>
         /// Pauses the game play sound effects with AudioListener.
         /// </summary>
@@ -344,5 +351,43 @@ namespace GGJ2025.Managers
         }
 
         #endregion
+
+        public bool Initialized { get; private set; }
+
+        private IEnumerator Initialize()
+        {
+            var mappingsLoad = Addressables.LoadAssetAsync<AudioMappings>("AudioMappings").ToOperation();
+            yield return mappingsLoad;
+            if (mappingsLoad.Result is { } mappings)
+            {
+                var musicOperations = mappings.musicMappings.Select(LoadMapping).ToList();
+                var uiOperations = mappings.uiMappings.Select(LoadMapping).ToList();
+                var gameOperations = mappings.gameMappings.Select(LoadMapping).ToList();
+                yield return new ParallelOperation(musicOperations.Concat(uiOperations).Concat(gameOperations));
+
+                PopulateClips(musicSoundEffectsDict, musicOperations, mappings.musicMappings);
+                PopulateClips(uiSoundEffectsDict, uiOperations, mappings.uiMappings);
+                PopulateClips(GameSoundEffectsDict, gameOperations, mappings.gameMappings);
+            }
+
+            Initialized = true;
+        }
+
+        private static AddressablesLoadOperation<AudioClip> LoadMapping<T>(AudioMappings.AudioMapping<T> m)
+            where T : Enum =>
+            Addressables.LoadAssetAsync<AudioClip>(m.sound).ToOperation();
+
+        private static void PopulateClips<T>(Dictionary<T, AudioClip> dictionary,
+            IReadOnlyList<AddressablesLoadOperation<AudioClip>> loadOperations,
+            IReadOnlyList<AudioMappings.AudioMapping<T>> mappings) where T : Enum
+        {
+            for (var i = 0; i < loadOperations.Count; i++)
+            {
+                if (loadOperations[i].Result is {} clip)
+                {
+                    dictionary.Add(mappings[i].type, clip);
+                }
+            }
+        }
     }
 }

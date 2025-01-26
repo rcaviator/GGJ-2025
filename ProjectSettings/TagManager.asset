@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Trash
   - Enemy
+  - EnemyProjectile
+  - PlayerProjectile
+  - Bubble
+  - Trash Ball
   layers:
   - Default
   - TransparentFX
@@ -40,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 239109409
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

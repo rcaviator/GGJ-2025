@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using GGJ2025.AddressableUtils;
 using GGJ2025.Operations;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace GGJ2025.Utilities
 {
   public class PrefabLoader : MonoBehaviour, IAsyncInitialized
   {
-    [SerializeField, AddressableNameLookup]
-    private string prefabName = string.Empty;
+    [SerializeField] private AssetReference prefabReference = null!;
 
     public GameObject? Prefab { get; private set; }
 
-    [MemberNotNullWhen(true, "Prefab")]
-    public bool Initialized => Prefab is not null;
+    [MemberNotNullWhen(true, "Prefab")] public bool Initialized => Prefab is not null;
 
     private IEnumerator Start()
     {
-      var load = new LoadAsset<GameObject>(prefabName);
+      var load = Addressables.LoadAssetAsync<GameObject>(prefabReference).ToOperation();
       yield return load;
       Prefab = load.Result;
     }
