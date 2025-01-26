@@ -226,6 +226,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1122,7 +1135,47 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      trash_monster_move_0: 2826959028913127711
+      trash_monster_move_1: -1036067798903410621
+      trash_monster_move_10: -2333871948370334494
+      trash_monster_move_11: -7183902609366614715
+      trash_monster_move_12: 652349224658778
+      trash_monster_move_13: 6211373295850528866
+      trash_monster_move_14: -3164609514531347137
+      trash_monster_move_15: 7349430788459640978
+      trash_monster_move_16: 421319951355061416
+      trash_monster_move_17: -8205172372294441454
+      trash_monster_move_18: -2162309784212080787
+      trash_monster_move_19: -2970919382329254673
+      trash_monster_move_2: 7838498231584458494
+      trash_monster_move_20: -2740588783251738100
+      trash_monster_move_21: 4279382573250606220
+      trash_monster_move_22: 4800413507484353769
+      trash_monster_move_23: -11317779640662261
+      trash_monster_move_24: 2950298280185113743
+      trash_monster_move_25: 3864810676754181295
+      trash_monster_move_26: -8726868573042804068
+      trash_monster_move_27: 8221472713002541615
+      trash_monster_move_28: -3439592406438086814
+      trash_monster_move_29: -8217345477987612206
+      trash_monster_move_3: -7813956674467499077
+      trash_monster_move_30: -673674075752076842
+      trash_monster_move_31: -5656832652611050087
+      trash_monster_move_32: -1065965808747389231
+      trash_monster_move_33: -2282942530701211023
+      trash_monster_move_34: -3022154687024675372
+      trash_monster_move_35: 516495781497742168
+      trash_monster_move_36: -2949074971072005269
+      trash_monster_move_37: 6884765426145858888
+      trash_monster_move_38: -8907141334545158722
+      trash_monster_move_39: -2108439938206004570
+      trash_monster_move_4: -8871122189768041739
+      trash_monster_move_5: -4456722013649137234
+      trash_monster_move_6: -8802699503591828760
+      trash_monster_move_7: 3894170779052335241
+      trash_monster_move_8: -2749557727957798731
+      trash_monster_move_9: -8852122919411939485
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

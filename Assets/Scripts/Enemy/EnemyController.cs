@@ -166,11 +166,11 @@ namespace GGJ2025
             }
         }
 
-        IEnumerator OnTriggerEnter2D(Collider2D collider) {
-            if (collider.tag == "Trash Ball") {
+        IEnumerator OnCollisionEnter2D(Collision2D collision) {
+            if (collision.collider.CompareTag("Trash Ball")) {
                 Destroy(this.gameObject);
-            } else if (collider.tag == ("Bubble")) {
-                Destroy(collider.gameObject);
+            } else if (collision.collider.CompareTag("Bubble")) {
+                Destroy(collision.collider.gameObject);
                 Debug.Log("STOP IN THE NAME OF THE LOL");
                 float tempSpeed = speed;
                 speed = 0;
