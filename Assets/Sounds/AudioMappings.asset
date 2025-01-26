@@ -14,4 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicMappings: []
   uiMappings: []
-  gameMappings: []
+  gameMappings:
+  - type: 2
+    sound:
+      m_AssetGUID: 5ade56ef0f13bdf4d88662380131fe6c
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - type: 1
+    sound:
+      m_AssetGUID: 88cb789d40ac4a74397c30ebec03e2e5
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - type: 0
+    sound:
+      m_AssetGUID: 974247df033fc394fbeb1fa0f81ab4ab
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - type: 3
+    sound:
+      m_AssetGUID: 6b8a4da93f45e2d45a8f8c0d123836af
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - type: 4
+    sound:
+      m_AssetGUID: 52584565077b22449b09d449e8c4d989
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - type: 5
+    sound:
+      m_AssetGUID: f004d886a73139e4691090f7ea965078
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

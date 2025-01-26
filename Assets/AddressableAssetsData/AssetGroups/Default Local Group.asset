@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: af34b07db050f404c8532e5e1a9c351d
   m_SerializeEntries:
+  - m_GUID: 0c433977b5ec60a42ac62396b3398974
+    m_Address: Assets/Prefabs/PlayerTrashBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 149aaa07b9317844b82a5d58f1f4b867
     m_Address: AudioMappings
     m_ReadOnly: 0
@@ -30,13 +35,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52584565077b22449b09d449e8c4d989
+    m_Address: Assets/Sounds/trashbite.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ade56ef0f13bdf4d88662380131fe6c
+    m_Address: Assets/Sounds/BubbleHit.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b8a4da93f45e2d45a8f8c0d123836af
+    m_Address: Assets/Sounds/trashbagfootstep.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f8ff30382729e1408a3d70995f7474d
     m_Address: Assets/Prefabs/Levels/Level1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88cb789d40ac4a74397c30ebec03e2e5
+    m_Address: Assets/Sounds/loopbubble.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c4c8bcfe244e8e4a8767b12db4b9dad
     m_Address: Assets/Prefabs/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 974247df033fc394fbeb1fa0f81ab4ab
+    m_Address: Assets/Sounds/startbubblin.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -57,6 +87,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: baebd63796cb8394c8ed626da9ad4c77
     m_Address: Assets/Scenes/Game.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f004d886a73139e4691090f7ea965078
+    m_Address: Assets/Sounds/trashspit.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

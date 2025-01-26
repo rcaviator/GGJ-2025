@@ -77,6 +77,7 @@ namespace GGJ2025
             //Updates target position
             targetPos = target.GetComponent<Transform>().position;
             MoveTowardsTarget();
+            UpdateAnimationDirection();
 
             //Increments delay counter variable
             delayCounter++;
@@ -108,8 +109,8 @@ namespace GGJ2025
             animator.SetTrigger("Bite");
             if (target.GetComponent<SoapedObject>()) {
             //TODO: Handle collision with soaped object
-            } else if (target.tag == "Player") {
-                Debug.Log("om nom");
+            } else if (target.CompareTag("Player")) {
+                // Debug.Log("om nom");
                 target.GetComponent<Health>().Current -= damage;
             } else {
                 return;
@@ -169,13 +170,61 @@ namespace GGJ2025
                 moving = true;
                 // Move towards target.
                 if (moving) {
-                    animator.SetTrigger("Move");
+                    // animator.SetTrigger("Move");
                     moving = false;
                 }
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
             } else {
                 moving = false;
-                animator.SetTrigger("Idle"); //Play idle animation
+                // animator.SetTrigger("Idle"); //Play idle animation
+            }
+        }
+
+        /// <summary>
+        /// Gets the direction of the player
+        /// </summary>
+        private string GetAnimationDirection(float angle)
+        {
+            Direction direction = Direction.Right;
+
+            if (angle >= 337.5f || angle < 22.5f)
+                direction = Direction.Right;
+            else if (angle >= 22.5f && angle < 67.5f)
+                direction = Direction.UpRight;
+            else if (angle >= 67.5f && angle < 112.5f)
+                direction = Direction.Up;
+            else if (angle >= 112.5f && angle < 157.5f)
+                direction = Direction.UpLeft;
+            else if (angle >= 157.5f && angle < 202.5f)
+                direction = Direction.Left;
+            else if (angle >= 202.5f && angle < 247.5f)
+                direction = Direction.DownLeft;
+            else if (angle >= 247.5f && angle < 292.5f)
+                direction = Direction.Down;
+            else // angle >= 292.5f && angle < 337.5f
+                direction = Direction.DownRight;
+
+            return $"Trash_Move_{direction}";
+        }
+
+        /// <summary>
+        /// Updates the animation direction of the enemy
+        /// </summary>
+        private void UpdateAnimationDirection()
+        {
+            float angle = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
+            if (angle < 0)
+            {
+                angle += 360;
+            }
+
+            string direction = GetAnimationDirection(angle);
+
+            // if the animator is not playing the current direction, play it
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(direction) &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("trash_bite"))
+            {
+                animator.Play(direction);
             }
         }
 
@@ -184,11 +233,11 @@ namespace GGJ2025
             //     Destroy(this.gameObject);
             // } else 
             if (speed > 0 && other.TryGetComponent<PlayerBubble>(out _)) {
-                Debug.Log("STOP IN THE NAME OF THE LOL");
+                // Debug.Log("STOP IN THE NAME OF THE LOL");
                 float tempSpeed = speed;
                 speed = 0;
                 yield return new WaitForSeconds(2);
-                Debug.Log("FREE2GO");
+                // Debug.Log("FREE2GO");
                 speed = tempSpeed;
             }
         }
