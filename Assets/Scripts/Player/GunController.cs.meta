@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3ff926181cd53490a819521e604423f4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gunSprite: {instanceID: 0}
+  - playerSprite: {fileID: 6506490302034481036, guid: 8c4c8bcfe244e8e4a8767b12db4b9dad, type: 3}
+  - firePoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

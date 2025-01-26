@@ -7,7 +7,8 @@ namespace GGJ2025
     {
         #region Fields
 
-
+        [SerializeField] private GameObject? impactEffect;
+        [SerializeField] private GameObject? deathEffect;
 
         #endregion
 
@@ -23,7 +24,7 @@ namespace GGJ2025
         { get; set; }
 
         public float LifeTime
-        { get; private set; }
+        { get; protected set; }
 
         public float CurrentTime
         { get; private set; }
@@ -51,6 +52,10 @@ namespace GGJ2025
             else
             {
                 Destroy(gameObject);
+                if (deathEffect != null)
+                {
+                    Instantiate(deathEffect, transform.position, Quaternion.identity);
+                }
             }
         }
 
@@ -90,6 +95,11 @@ namespace GGJ2025
 
             if (shouldDestroy)
             {
+                if (impactEffect != null)
+                {
+                    Instantiate(impactEffect, transform.position, Quaternion.identity);
+                }
+
                 Destroy(gameObject);
             }
         }
