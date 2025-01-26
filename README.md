@@ -1,3 +1,3 @@
-# GGJ 2025
+# Stud Sud Bud
 
-- Unity will ignore assets in the `RawAssets~` folder.
+https://rcaviator.github.io/GGJ-2025/
