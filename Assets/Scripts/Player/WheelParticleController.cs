@@ -100,6 +100,7 @@ namespace GGJ2025
             particleObj.transform.SetParent(transform);
             particleObj.transform.localPosition = Vector3.zero;
             wheelParticles = particleObj.AddComponent<ParticleSystem>();
+            wheelParticles.Stop();
 
             // Configure the particle system
             var main = wheelParticles.main;
