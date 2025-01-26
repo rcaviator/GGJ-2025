@@ -30,6 +30,11 @@ namespace GGJ2025
             Direction = Camera.main.ScreenToWorldPoint(Direction);
             Direction = Direction - (Vector2)transform.position;
             Direction = Direction.normalized;
+
+            Size = Random.Range(Size * .75f, Size * 1.25f);
+            transform.localScale = new Vector3(Size, Size, 1);
+            Speed = Random.Range(Speed * .75f, Speed * 1.25f);
+            transform.Rotate(0, 0, Random.Range(-15, 15));
         }
 
         #endregion
@@ -42,7 +47,12 @@ namespace GGJ2025
 
         #region Private Methods
 
-
+        protected override (bool shouldDamage, bool shouldDestroy) GetHitHandling(Collider2D other)
+        {
+            var shouldDestroy = !other.CompareTag("Player");
+            var shouldDamage = shouldDestroy && !other.TryGetComponent<SoapedObject>(out _);
+            return (shouldDamage, shouldDestroy);
+        }
 
         #endregion
     }

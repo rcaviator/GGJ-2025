@@ -83,6 +83,11 @@ namespace GGJ2025
             Instantiate(prefabLoader.Prefab);
         }
 
+        public void OnHealthUpdated(Health health)
+        {
+            EventManager.Invoke(CustomEventType.PlayerHealth, health.Current / health.Max);
+        }
+
         #endregion
 
         #region Private Methods

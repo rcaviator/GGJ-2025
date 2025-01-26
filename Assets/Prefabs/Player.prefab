@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6506490302034481036}
   - component: {fileID: 7338106670833030326}
   - component: {fileID: 6463392300346628056}
+  - component: {fileID: 4586943116639689118}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,3 +121,34 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+--- !u!114 &4586943116639689118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320729930817435199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71b6b567cec4f30b574f3799301b8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 100
+  onUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7338106670833030326}
+        m_TargetAssemblyTypeName: GGJ2025.PlayerController, GGJ2025
+        m_MethodName: OnHealthUpdated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEmpty:
+    m_PersistentCalls:
+      m_Calls: []
