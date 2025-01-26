@@ -170,13 +170,13 @@ namespace GGJ2025
                 moving = true;
                 // Move towards target.
                 if (moving) {
-                    animator.SetTrigger("Move");
+                    // animator.SetTrigger("Move");
                     moving = false;
                 }
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
             } else {
                 moving = false;
-                animator.SetTrigger("Idle"); //Play idle animation
+                // animator.SetTrigger("Idle"); //Play idle animation
             }
         }
 
@@ -233,11 +233,11 @@ namespace GGJ2025
             //     Destroy(this.gameObject);
             // } else 
             if (speed > 0 && other.TryGetComponent<PlayerBubble>(out _)) {
-                Debug.Log("STOP IN THE NAME OF THE LOL");
+                // Debug.Log("STOP IN THE NAME OF THE LOL");
                 float tempSpeed = speed;
                 speed = 0;
                 yield return new WaitForSeconds(2);
-                Debug.Log("FREE2GO");
+                // Debug.Log("FREE2GO");
                 speed = tempSpeed;
             }
         }
