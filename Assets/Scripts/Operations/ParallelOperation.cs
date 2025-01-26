@@ -20,6 +20,7 @@ public class ParallelOperation : Operation
       var done = true;
       foreach (var operation in operations)
       {
+        // TODO: not sure this handles nested IEnumerators correctly.
         if (!operation.Completed && operation.MoveNext())
         {
           done = false;

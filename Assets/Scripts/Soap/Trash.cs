@@ -1,3 +1,4 @@
+using System;
 using GGJ2025.Utilities;
 using UnityEngine;
 
@@ -11,6 +12,16 @@ namespace GGJ2025.Soap
 
       // Reset health in case of unsoap
       health.Current = health.Max;
+    }
+
+    private void Start()
+    {
+      EventManager.Invoke(CustomEventType.Trash, true);
+    }
+
+    private void OnDestroy()
+    {
+      EventManager.Invoke(CustomEventType.Trash, false);
     }
   }
 }
