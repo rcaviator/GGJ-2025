@@ -129,7 +129,18 @@ namespace GGJ2025
 
             HandleBubbleGunSounds();
         }
+        private void HandlePlayerMoveSounds()
+        {
+            if (Keyboard.current.wKey.wasPressedThisFrame ||
+                Keyboard.current.aKey.wasPressedThisFrame ||
+                Keyboard.current.sKey.wasPressedThisFrame ||
+                Keyboard.current.dKey.wasPressedThisFrame)
+            {
+                AudioManager.Instance.PlayGamePlaySoundEffect(GameSoundEffect.BubbleGunStart);
 
+                bubbleGunStartSoundDuration = AudioManager.Instance.GetAudioClip(GameSoundEffect.BubbleGunStart).length;
+            }
+        }
         private void HandleBubbleGunSounds()
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
