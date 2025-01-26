@@ -1,6 +1,10 @@
 using System;
+using System.Collections;
+using GGJ2025.Utilities;
+
 // using System.Numerics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace GGJ2025
 {
@@ -37,6 +41,8 @@ namespace GGJ2025
         //Target position
         //Minimum distance enemy can be to player
         public float minDistance = 1;
+        //Distance required to bite target
+        public float biteDistance = 1;
         Vector3 targetPos;
         #endregion
 
@@ -76,7 +82,11 @@ namespace GGJ2025
                 if (isRanged) {
                     ShootProjectile();
                 } else {
-                    Bite();
+                     //Checks if target is within certain distance
+                    float distance = Vector3.Distance(transform.position, target.transform.position);
+                    if(distance <= biteDistance) {
+                        Bite();
+                    }
                 }
 
             }
@@ -84,9 +94,20 @@ namespace GGJ2025
 
         }
 
-
+        /// <summary>
+        /// Bites a thing
+        /// </summary>
         void Bite() {
-            //Checks if target is within certain distance
+
+            if (target.GetComponent<SoapedObject>()) {
+            //TODO: Handle collision with soaped object
+            } else if (target.tag == "Player") {
+                Debug.Log("om nom");
+                target.GetComponent<Health>().Current -= damage;
+            } else {
+                return;
+            }
+
             //TODO: Damage target
         }
 
@@ -97,7 +118,6 @@ namespace GGJ2025
             //Initiates a clone
             GameObject projClone = Instantiate(projectile, transform.position, transform.rotation);
             EnemyProjectileBehavior projBehavior = projClone.GetComponent<EnemyProjectileBehavior>();
-            Debug.Log(target);
             projBehavior.target = target;
             projBehavior.damage = damage;
             projBehavior.speed = projectileSpeed;
@@ -138,11 +158,25 @@ namespace GGJ2025
             float step = speed * Time.deltaTime;
 
             float distance = Vector3.Distance(transform.position, targetPos);
-            Debug.Log(distance);
+            // Debug.Log(distance);
             // Check if the distance to target is greater than or equal to minimum distance
             if (distance >= minDistance) {
                 // Move towards target.
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            }
+        }
+
+        IEnumerator OnTriggerEnter2D(Collider2D collider) {
+            if (collider.tag == "Trash Ball") {
+                Destroy(this.gameObject);
+            } else if (collider.tag == ("Bubble")) {
+                Destroy(collider.gameObject);
+                Debug.Log("STOP IN THE NAME OF THE LOL");
+                float tempSpeed = speed;
+                speed = 0;
+                yield return new WaitForSeconds(2);
+                Debug.Log("FREE2GO");
+                speed = tempSpeed;
             }
         }
     }

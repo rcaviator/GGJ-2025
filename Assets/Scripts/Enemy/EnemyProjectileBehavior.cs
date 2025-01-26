@@ -1,3 +1,4 @@
+using GGJ2025.Utilities;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
 using UnityEngine.Rendering;
@@ -39,8 +40,10 @@ namespace GGJ2025
             if (colTarget.GetComponent<SoapedObject>()) {
                 //TODO: Handle collision with soaped object
             } else if (colTarget.tag == "Player") {
-                //TODO: Handle collision with player
-                //TODO: Damage player
+                GameObject player = col.gameObject;
+                player.GetComponent<Health>().Current -= damage;
+            } else {
+                return;
             }
             Destroy(this);
         }
