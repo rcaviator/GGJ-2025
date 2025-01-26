@@ -95,6 +95,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8152e8584be7214098cd025e2bae1cb
+    m_Address: Assets/Sounds/trashcompleteclean.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f004d886a73139e4691090f7ea965078
     m_Address: Assets/Sounds/trashspit.wav
     m_ReadOnly: 0

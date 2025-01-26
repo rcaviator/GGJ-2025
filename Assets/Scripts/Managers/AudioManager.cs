@@ -62,7 +62,7 @@ namespace GGJ2025.Managers
         TrashFootstep, TrashBite, TrashSpit,
 
         // Player
-        StartMove,MoveLoop,
+        StartMove,MoveLoop, TrashCleaned
     }
 
     #endregion
